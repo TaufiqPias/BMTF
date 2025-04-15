@@ -1,0 +1,519 @@
+body {
+  display: flex;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+  background-color: #b6e9c2;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Text Color Enforcement */
+body:not(.dark-mode) {
+  color: #333;
+}
+
+body:not(.dark-mode) p,
+body:not(.dark-mode) h1,
+body:not(.dark-mode) label,
+body:not(.dark-mode) .address {
+  color: #333;
+}
+
+input {
+  height: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 8px; /* Consistent padding for inputs */
+  box-sizing: border-box;
+}
+
+.invoice-container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background: white;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px; /* Added spacing */
+}
+
+.invoice-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.logo {
+  border: 1px solid #ddd;
+  padding: 10px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+#logo-upload {
+  height: fit-content;
+  width: 400px;
+  font-size: 10px;
+}
+
+#change-logo {
+  margin-top: 5px;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 12px;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+.logo-container {
+  max-width: 200px;
+  max-height: 80px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+#logo-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 20px;
+  text-align: left; /* Left-aligned INVOICE */
+  padding-top: 10px; /* 10px top padding */
+}
+
+.info-section {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.info-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: small;
+}
+
+.info-section textarea,
+.info-section input {
+  width: 100%;
+  height: 20px;
+  padding: 8px; /* Consistent padding */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.info-section textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 60px;
+}
+
+.info-section input {
+  max-width: 100%;
+}
+
+.from,
+.to,
+.details {
+  flex: 1 1 100%;
+}
+
+.asset,
+.invo {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.address {
+  margin-top: 10px;
+}
+
+.address input {
+  max-width: 100%;
+  width: 100%;
+  padding: 8px; /* Consistent padding */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 5px 0;
+}
+
+thead {
+  background: #2c3e50;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Column widths based on ratio 15:8:5:5:2 (total 35 parts) */
+th:nth-child(1),
+td:nth-child(1) {
+  width: 42.86%; /* 15/35 */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 14.29%; /* 5/35 */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 14.29%; /* 5/35 */
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 22.86%; /* 8/35 */
+  text-align: right;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 5.71%; /* 2/35 */
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+
+td input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+td input.item-desc {
+  min-width: 150px; /* Ensure description input is usable */
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #218838;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#add-item {
+  margin: 10px 0;
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#add-item:hover {
+  background: #218838;
+}
+
+.summary-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  flex-direction: column;
+}
+
+.notes-terms {
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+.notes-terms textarea {
+  width: 100%;
+  max-width: 100%;
+  height: 60px;
+  padding: 8px; /* Consistent padding */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.totals {
+  flex: 1;
+  text-align: left;
+}
+
+.totals p {
+  margin: 5px 0;
+}
+
+#download-pdf {
+  display: block;
+  margin: 15px auto;
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px; /* Consistent width */
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#download-pdf:hover {
+  background: #39834a;
+}
+
+a {
+  display: block;
+  margin: 10px auto;
+  padding: 10px; /* Match #download-pdf padding */
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; /* Match #download-pdf font-size */
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+  background-color: #39834a;
+}
+
+/* Dark Mode Styles */
+html.dark-mode body {
+  background-color: #082032 !important;
+  color: #fff !important;
+}
+
+html.dark-mode .invoice-container {
+  background-color: rgba(44, 57, 75, 0.9);
+  border-color: #082032;
+}
+
+html.dark-mode .invoice-text,
+html.dark-mode .address,
+html.dark-mode .title h1,
+html.dark-mode .info-section label,
+html.dark-mode .totals p {
+  color: #fff;
+}
+
+html.dark-mode thead {
+  background-color: #334756;
+  color: #fff;
+}
+
+html.dark-mode #add-item,
+html.dark-mode #download-pdf,
+html.dark-mode a {
+  background-color: #334756;
+  color: #ff4c29;
+}
+
+html.dark-mode label {
+  color: #fff;
+}
+
+html.dark-mode #add-item:hover,
+html.dark-mode #download-pdf:hover,
+html.dark-mode a:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+html.dark-mode .remove-item {
+  color: #ff4c29;
+}
+
+/* Mobile-Specific Media Query */
+@media (max-width: 600px) {
+  body {
+    padding: 5px;
+  }
+
+  .invoice-container {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .invoice-text {
+    align-items: flex-start;
+    font-size: 10px;
+  }
+
+  .logo-container {
+    max-width: 150px;
+    max-height: 60px;
+    height: 60px;
+  }
+
+  .asset,
+  .invo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .title h1 {
+    font-size: 24px;
+    display: flex;
+  }
+
+  .info-section {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .info-section textarea,
+  .info-section input {
+    font-size: 12px;
+    padding: 8px; /* Consistent padding */
+  }
+
+  /* Table remains scrollable */
+  #item-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  table {
+    min-width: 350px;
+  }
+
+  th,
+  td {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  td input {
+    font-size: 12px;
+    min-height: 14px;
+  }
+
+  .notes textarea {
+    box-sizing: border-box;
+  }
+
+  .summary-section {
+    flex-direction: column;
+  }
+
+  .totals {
+    text-align: left;
+  }
+
+  .logo {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #logo-upload {
+    height: fit-content;
+  }
+
+  .notes-terms textarea {
+    height: 80px;
+    padding: 8px; /* Consistent padding */
+  }
+
+  #add-item,
+  #download-pdf,
+  a {
+    padding: 10px;
+    font-size: 14px;
+    max-width: 100%; /* Full width on mobile */
+    box-sizing: border-box;
+  }
+}
+
+/* Desktop-Specific Media Query */
+@media (min-width: 601px) {
+  .invoice-container {
+    max-width: 800px; /* Restore desktop width */
+  }
+
+  .header {
+    flex-direction: row;
+  }
+
+  .info-section {
+    flex-direction: row;
+  }
+
+  .from,
+  .to,
+  .details {
+    flex: 0.5;
+  }
+
+  .summary-section {
+    flex-direction: row;
+  }
+
+  .totals {
+    text-align: right;
+  }
+
+  /* Table fits container without scrolling */
+  #item-table {
+    overflow-x: visible;
+  }
+
+  table {
+    min-width: 0;
+  }
+}

@@ -1,0 +1,334 @@
+/* Light Mode Body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #b6e9c2;
+}
+
+/* Dark Mode Body */
+html.dark-mode body {
+  background-color: #082032;
+  color: #fff;
+}
+
+/* Body Transitions */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Body Link Overrides */
+body .info-panel a[href="mailto:taufiq.xenox@gmail.com"] {
+  color: #044202;
+  text-decoration: none;
+}
+
+body .info-panel a[href="https://taufiqpias.github.io/portfolio"]
+{
+  color: #044202;
+  text-decoration: none;
+}
+
+/* Dark Mode Body Link Overrides */
+html.dark-mode a[href="mailto:taufiq.xenox@gmail.com"] {
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+html.dark-mode a[href="mailto:taufiq.xenox@gmail.com"]:hover {
+  color: #e6e6e6;
+}
+
+html.dark-mode a[href="https://taufiqpias.github.io/portfolio"]
+{
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+html.dark-mode a[href="https://taufiqpias.github.io/portfolio"]:hover
+{
+  color: #e6e6e6;
+}
+
+/* Light Mode Header */
+header {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+/* Dark Mode Header */
+html.dark-mode header {
+  background-color: #2c394b;
+}
+
+/* Header Navigation */
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.header-nav a:hover {
+  color: #044202;
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
+}
+
+/* Dark Mode Header Navigation */
+html.dark-mode .header-nav a {
+  color: #fff;
+}
+
+html.dark-mode .header-nav a:hover {
+  color: #ff4c29;
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Header Transitions */
+header {
+  transition: background-color 0.3s ease;
+}
+
+/* Media Queries for Header (Mobile Only) */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 8px 10px; /* Reduced side padding for more space */
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  .header-nav {
+    gap: 8px; /* Reduced gap to save space */
+    flex-wrap: nowrap; /* Prevent wrapping to keep links in one row */
+    justify-content: center; /* Center links for better appearance */
+    margin-top: 8px; /* Slightly reduced margin */
+  }
+
+  .header-nav a {
+    font-size: 12px; /* Smaller font size to fit links */
+    padding: 4px 6px; /* Reduced padding */
+  }
+
+  .header-actions {
+    gap: 8px; /* Reduced gap */
+    margin-top: 8px; /* Slightly reduced margin */
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-container {
+    padding: 8px 5px; /* Further reduce padding for ~390px viewports */
+  }
+
+  .header-nav {
+    gap: 6px; /* Further reduce gap */
+  }
+
+  .header-nav a {
+    font-size: 11px; /* Even smaller font size */
+    padding: 3px 5px; /* Minimal padding */
+  }
+
+  header h1 {
+    font-size: 20px; /* Match existing 480px query for consistency */
+  }
+}
+
+.toggle-btn {
+  padding: 6px 12px;
+  background-color: #fff;
+  color: #28a745;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #e9ecef;
+}
+
+html.dark-mode .toggle-btn {
+  background-color: #334756;
+  color: #ff4c29;
+}
+
+html.dark-mode .toggle-btn:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .toggle-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toggle-btn {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
+
+.profile-btn {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-btn:hover {
+  background-color: #218838;
+}
+
+html.dark-mode .profile-btn {
+  background-color: #334756;
+  border-color: #ff4c29;
+  color: #ff4c29;
+}
+
+html.dark-mode .profile-btn:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .profile-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-btn {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
+
+/* Container Styles - Light Mode */
+.container {
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 10px;
+  background-color: #fff; /* White container */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: retained from original */
+  box-sizing: border-box; /* Ensures padding doesn’t increase width beyond 100% */
+}
+
+/* Container Styles - Dark Mode */
+html.dark-mode .container,
+html.dark-mode .data-container {
+  background-color: #334756; /* Matches .column in dark mode */
+  color: #fff; /* Matches text color in dark mode */
+}
+
+/* Optional: Keep transitions consistent */
+.container {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Media Queries (Adjusted for new container specs) */
+@media (max-width: 768px) {
+  .container {
+    margin: 10px; /* Keeps 10px margin */
+    padding: 8px; /* Keeps 8px padding */
+  }
+}
+
+.data-container {
+  max-width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 10px;
+  background-color: #fff; /* White container */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: retained from original */
+  box-sizing: border-box; /* Ensures padding doesn’t increase width beyond 100% */
+}
+.data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 10px;
+  height: 100%;
+  color: #161616;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 12px;
+  text-align: left;
+  border: #161616 1px solid;
+  border-radius: 8px;
+  text-align: center;
+  overflow-x: hidden; /* Prevents overflow */
+}
+
+/* Customize scrollbar instead of hiding */
+body::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}
+body::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar color */
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Hover color */
+}

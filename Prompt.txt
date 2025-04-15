@@ -1,0 +1,36 @@
+Now I want to integrate the database and I need to make sure the following. 
+
+1. Once a user logs in, He/She will not be logged out until the whole tab/ website is closed. 
+2. I do not want multiple log ins using same user credentials through multiple devices. Only the latest log in will take effect. If multiple log in is detected, the website will automatically redirect the user to "error.html" page. 
+
+I am going to have to use MYSQL as database. can this be done using MYSQL or can we do it in js codes?
+
+BMT/
+├── bid-maker-backend/
+|   ├── node_modules/   
+│   ├── server.js
+│   ├── .env
+|   ├── package-lock.json
+│   ├── package.json
+│   ├── public/
+|   |   ├── apps/
+|   |   ├── Images/
+|   |   |   ├── Favicon.png
+|   |   ├── navpages/
+│   │   │   ├── analytics.html
+│   │   │   ├── analytics.css
+│   │   │   ├── pricing.html
+│   │   ├── pages/  
+│   │   ├── auth.html
+│   │   ├── profile.html
+│   │   ├── error.html
+│   │   ├── auth.css
+│   │   ├── profile.css
+│   │   ├── auth.js
+│   │   ├── profile.js
+│   │   ├── dark_mode.js
+│   │   ├── index.html
+│   │   ├── script.js
+│   │   ├── styles.css
+
+

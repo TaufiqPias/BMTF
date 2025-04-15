@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Bid Maker Tool</title>
+    <link rel="icon" type="image/x-icon" href="./Images/Favicon.png" />
+    <link rel="stylesheet" href="./auth.css" />
+
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <!-- Clarity tracking -->
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <h1>Bid Maker Tool</h1>
+        <!-- Uncomment and fix paths if needed -->
+        <!-- <nav class="header-nav">
+          <a href="./index.html">Home</a>
+          <a href="./navpages/pricing.html">Pricing</a>
+          <a href="#bid-demo">Bid Demo</a>
+          <a href="./navpages/analytics.html">Analytics</a>
+          <a href="https://forms.gle/KLGN4DuJQoBhE3nq9" target="_blank"
+            >Report</a
+          >
+        </nav> -->
+        <div class="header-actions">
+          <button id="darkModeToggle" class="toggle-btn">Dark Mode</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Trial Warning Popup -->
+    <div class="trial-warning" id="trial-warning" style="display: none">
+      <div class="trial-warning-content">
+        <h3>Please Subscribe</h3>
+        <p>
+          Your Free Trial Has Ended. Please Subscribe! <br /><br />
+          <a href="./navpages/pricing.html">Purchase Subscription Here</a>
+        </p>
+        <button
+          class="close-btn"
+          onclick="document.getElementById('trial-warning').style.display='none'"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="auth-container">
+      <!-- Signup Section (Left) -->
+      <div class="auth-section signup-section">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+          <div class="form-group name-group">
+            <div>
+              <label for="signup-first-name">First Name</label>
+              <input type="text" id="signup-first-name" required />
+              <span class="error-message"></span>
+            </div>
+            <div>
+              <label for="signup-last-name">Last Name</label>
+              <input type="text" id="signup-last-name" required />
+              <span class="error-message"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signup-gender">Gender</label>
+            <select id="signup-gender" required>
+              <option value="" disabled selected>Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" required />
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="signup-mobile">Mobile Number</label>
+            <input type="tel" id="signup-mobile" required />
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" required />
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="signup-confirm-password">Confirm Password</label>
+            <input type="password" id="signup-confirm-password" required />
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group additional-info">
+            <button type="button" class="toggle-btn">
+              Additional Info (Optional)
+            </button>
+            <div class="additional-fields" style="display: none">
+              <div class="form-group">
+                <label for="signup-designation">Designation</label>
+                <input type="text" id="signup-designation" />
+              </div>
+              <div class="form-group">
+                <label for="signup-company">Company Name</label>
+                <input type="text" id="signup-company" />
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="action-btn">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- Login Section (Right) -->
+      <div class="auth-section login-section">
+        <h2>Log In</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-identifier">Email or Mobile Number</label>
+            <input type="text" id="login-identifier" required />
+            <span class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required />
+            <span class="error-message"></span>
+          </div>
+          <button type="submit" class="action-btn">Log In</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="./auth.js"></script>
+    <script src="./dark_mode.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9308ebbe6ec4456b',t:'MTc0NDY5MzY2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

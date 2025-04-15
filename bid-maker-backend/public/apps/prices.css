@@ -1,0 +1,801 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff; /* Default light mode background */
+  color: #333; /* Default light mode text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Text Color Enforcement */
+:not(.dark-mode) body {
+  color: #333;
+}
+
+:not(.dark-mode) body p,
+:not(.dark-mode) body h2,
+:not(.dark-mode) body .total-price {
+  color: #333;
+}
+
+:not(.dark-mode) body .header {
+  color: #effeee;
+}
+
+/* Light Mode Header */
+/* Light Mode Header */
+header {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+/* Dark Mode Header */
+html.dark-mode header {
+  background-color: #2c394b;
+}
+
+/* Header Navigation */
+/* Header Navigation */
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-nav a {
+  padding: 5px 10px;
+  background-color: #28a745; /* Green background */
+  color: #fff; /* White text */
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.header-nav a:hover {
+  /* background-color: #218838; Darker green on hover */
+  color: #fff; /* Keep white text */
+  transform: scale(1.1); /* Slight scale effect */
+}
+/* Dark Mode Header Navigation */
+html.dark-mode .header-nav a {
+  background-color: unset; /* Dark mode button background */
+  color: #fff; /* Orange text for dark mode */
+}
+
+html.dark-mode .header-nav a:hover {
+  background-color: unset;
+  color: #ff4c29; /* White text on hover */
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Header Transitions */
+header {
+  transition: background-color 0.3s ease;
+}
+
+/* Media Queries for Header (Mobile Only) */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 8px 10px; /* Reduced side padding for more space */
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  .header-nav {
+    gap: 8px; /* Reduced gap to save space */
+    flex-wrap: nowrap; /* Prevent wrapping to keep links in one row */
+    justify-content: center; /* Center links for better appearance */
+    margin-top: 8px; /* Slightly reduced margin */
+  }
+
+  .header-nav a {
+    font-size: 12px; /* Smaller font size to fit links */
+    padding: 4px 6px; /* Reduced padding */
+  }
+
+  .header-actions {
+    gap: 8px; /* Reduced gap */
+    margin-top: 8px; /* Slightly reduced margin */
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-container {
+    padding: 8px 5px; /* Further reduce padding for ~390px viewports */
+  }
+
+  .header-nav {
+    gap: 6px; /* Further reduce gap */
+  }
+
+  .header-nav a {
+    font-size: 11px; /* Even smaller font size */
+    padding: 3px 5px; /* Minimal padding */
+  }
+
+  header h1 {
+    font-size: 20px; /* Match existing 480px query for consistency */
+  }
+}
+
+.toggle-btn {
+  padding: 6px 12px;
+  background-color: #fff;
+  color: #28a745;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #e9ecef;
+}
+
+html.dark-mode .toggle-btn {
+  background-color: #334756;
+  color: #ff4c29;
+}
+
+html.dark-mode .toggle-btn:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .toggle-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toggle-btn {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
+
+.profile-btn {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-btn:hover {
+  background-color: #218838;
+}
+
+html.dark-mode .profile-btn {
+  background-color: #334756;
+  border-color: #ff4c29;
+  color: #ff4c29;
+}
+
+html.dark-mode .profile-btn:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .profile-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-btn {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+}
+
+.left-column {
+  width: 50%;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.right-column {
+  width: 50%;
+  padding-left: 20px;
+}
+
+.table {
+  height: 80vh; /* Match P.css left-column height */
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-right: 5px;
+}
+
+.table::-webkit-scrollbar {
+  width: 10px;
+  margin-left: 3px;
+  padding-left: 3px;
+}
+
+.table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+  margin-top: 0px; /* Match P.css scrollbar styling */
+}
+
+.table::-webkit-scrollbar-thumb {
+  background-color: #28a745;
+  border-radius: 5px;
+}
+
+.table::-webkit-scrollbar-thumb:hover {
+  background-color: #218838;
+}
+
+.search-filter {
+  margin-bottom: 20px;
+  padding: 0 10px; /* Match P.css */
+}
+
+.search-filter input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #28a745;
+  border-radius: 4px;
+}
+
+h2 {
+  color: #757575;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 2px 8px;
+  border: 1px solid #4bd345;
+  text-align: left;
+  font-size: 12px;
+}
+
+table th {
+  background-color: #28a745;
+  color: #effeee;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+table input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #b1b0b0;
+  border-radius: 4px;
+}
+
+table button {
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+table button:hover {
+  background-color: #218838;
+}
+
+.quotation {
+  margin-top: 10px;
+}
+
+.quotation table {
+  width: 100%;
+}
+
+.quotation th,
+.quotation td {
+  padding: 4px;
+  padding-left: 8px;
+  border: 1px solid #4bd345;
+  text-align: left;
+}
+
+.quotation th {
+  background-color: #28a745;
+  transition: background-color 0.3s ease;
+}
+
+.total-and-print {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #a8fd95;
+  transition: background-color 0.3s ease;
+}
+
+.total-price {
+  padding: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.print-button {
+  margin: 8px 5px;
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.print-button:hover {
+  background-color: #39834a;
+}
+
+.watermark {
+  display: none;
+  font-size: 16px;
+}
+
+@media print {
+  /* Reset dark mode styles to light mode */
+  body,
+  html.dark-mode body {
+    background-color: #fff !important; /* White background */
+    color: #333 !important; /* Dark text for readability */
+  }
+
+  /* Ensure the right column (quotation) uses light mode styles */
+  .right-column,
+  html.dark-mode .right-column {
+    background-color: #fff !important;
+    color: #333 !important;
+  }
+
+  /* Explicitly target all text elements within right-column */
+  .right-column *,
+  html.dark-mode .right-column * {
+    color: #333 !important; /* Force text color for all elements */
+  }
+
+  /* Reset table styles to light mode */
+  table,
+  html.dark-mode table,
+  .quotation table,
+  html.dark-mode .quotation table {
+    border-collapse: collapse;
+  }
+
+  table th,
+  table td,
+  .quotation th,
+  .quotation td,
+  html.dark-mode table th,
+  html.dark-mode table td,
+  html.dark-mode .quotation th,
+  html.dark-mode .quotation td {
+    border: 1px solid #4bd345 !important; /* Light mode green border */
+    color: #333 !important; /* Dark text for table cells */
+  }
+
+  table th,
+  .quotation th,
+  html.dark-mode table th,
+  html.dark-mode .quotation th {
+    background-color: #28a745 !important; /* Light mode green background */
+    color: #effeee !important; /* Light text for headers */
+  }
+
+  /* Reset total-and-print section to light mode */
+  .total-and-print,
+  html.dark-mode .total-and-print {
+    background-color: #a8fd95 !important; /* Light mode green background */
+  }
+
+  .total-price,
+  html.dark-mode .total-price {
+    color: #333 !important; /* Dark text for total price */
+  }
+
+  /* Reset watermark to light mode */
+  .watermark,
+  html.dark-mode .watermark {
+    color: #c2c2c2 !important; /* Light mode watermark color */
+  }
+
+  /* Hide unnecessary elements */
+  body * {
+    visibility: hidden;
+  }
+  .right-column,
+  .right-column * {
+    visibility: visible;
+  }
+  .right-column {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 95%;
+  }
+  .print-button {
+    display: none;
+  }
+  a {
+    display: none;
+  }
+  .watermark {
+    display: contents;
+  }
+
+  /* Ensure table layout is correct */
+  #quotation-table {
+    display: table !important;
+  }
+  #quotation-table thead {
+    display: table-header-group !important;
+  }
+  #quotation-table tbody {
+    display: table-row-group !important;
+  }
+  #quotation-table tr {
+    display: table-row !important;
+    background-color: transparent !important;
+    border-bottom: none !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  #quotation-table td,
+  #quotation-table th {
+    display: table-cell !important;
+    grid-template-columns: none !important;
+    border: 1px solid #4bd345 !important;
+    padding: 4px 8px !important;
+    text-align: left !important;
+  }
+  #quotation-table td::before,
+  #quotation-table th::before {
+    content: none !important;
+  }
+}
+
+.print-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.print-header img {
+  width: 64px;
+  height: 64px;
+  margin-right: 20px;
+}
+
+.print-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* a {
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+  background-color: #39834a;
+} */
+
+p {
+  font-size: smaller;
+  color: #c2c2c2;
+}
+
+/* Floating message styles */
+.floating-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 36px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.floating-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark Mode Styles */
+html.dark-mode body {
+  background-color: #082032;
+  color: #fff;
+}
+
+html.dark-mode .header {
+  background-color: #334756;
+  color: #fff;
+}
+
+html.dark-mode .table::-webkit-scrollbar-track {
+  background: #2e3f4d54;
+}
+
+html.dark-mode .table::-webkit-scrollbar-thumb {
+  background-color: #334756;
+}
+
+html.dark-mode .table::-webkit-scrollbar-thumb:hover {
+  background-color: #ff4c29;
+}
+
+html.dark-mode .search-filter input {
+  border-color: #334756;
+  background-color: rgba(44, 57, 75, 0.9);
+  color: #fff;
+}
+
+html.dark-mode h2,
+html.dark-mode .total-price,
+html.dark-mode p {
+  color: #fff;
+}
+
+html.dark-mode table th,
+html.dark-mode .quotation th {
+  background-color: #334756;
+  color: #fff;
+}
+
+html.dark-mode th {
+  border: solid 1px #ff4c29;
+}
+
+html.dark-mode td {
+  border: solid 1px #ff4c29;
+}
+
+html.dark-mode table button,
+html.dark-mode .print-button,
+html.dark-mode a {
+  background-color: #334756;
+  color: #ff4c29;
+}
+
+html.dark-mode table button:hover,
+html.dark-mode .print-button:hover,
+html.dark-mode a:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+html.dark-mode .total-and-print {
+  background-color: rgba(44, 57, 75, 0.9);
+}
+
+html.dark-mode .floating-message {
+  background-color: #334756;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+    padding: 0;
+  }
+
+  .table {
+    height: 50vh; /* Smaller height to show quotation table */
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+
+  .table::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .table::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+
+  .table::-webkit-scrollbar-thumb {
+    background-color: #28a745;
+    border-radius: 5px;
+  }
+
+  .table::-webkit-scrollbar-thumb:hover {
+    background-color: #218838;
+  }
+
+  #pricing-table,
+  #quotation-table {
+    display: block;
+  }
+
+  #pricing-table thead,
+  #quotation-table thead {
+    display: none; /* Hide headers in mobile */
+  }
+
+  #pricing-table tbody tr,
+  #quotation-table tbody tr {
+    display: block;
+    border-bottom: 1px solid #4bd345;
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: #f9f9f9;
+  }
+
+  html.dark-mode #pricing-table tbody tr,
+  html.dark-mode #quotation-table tbody tr {
+    border-bottom: 1px solid #ff4c29;
+  }
+
+  #pricing-table td,
+  #quotation-table td {
+    display: grid;
+    grid-template-columns: 100px 1fr; /* Unified two-column grid */
+    align-items: center;
+    text-align: left;
+    padding: 2px 0;
+    font-size: 13px;
+    line-height: 1.2;
+    border: none;
+  }
+
+  #pricing-table td::before,
+  #quotation-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #333;
+    grid-column: 1;
+    padding-right: 8px;
+  }
+
+  /* Hide Action label in mobile view for pricing table */
+  #pricing-table td[data-label="Action"]::before {
+    content: none; /* Remove the "Action" label */
+  }
+
+  #pricing-table td > *:not(:first-child),
+  #pricing-table td:not([data-label="Unit"]):not([data-label="Action"]),
+  #quotation-table td {
+    grid-column: 2;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+
+  /* Full-width input and button for pricing table */
+  #pricing-table td[data-label="Unit"],
+  #pricing-table td[data-label="Action"] {
+    display: block;
+    padding: 4px 0;
+  }
+
+  #pricing-table td[data-label="Unit"] input,
+  #pricing-table td[data-label="Action"] button {
+    width: 100%;
+    box-sizing: border-box;
+    grid-column: 1 / -1;
+  }
+
+  #pricing-table td input[type="number"] {
+    padding: 4px;
+    border: 1px solid #b1b0b0;
+    border-radius: 3px;
+    font-size: 13px;
+  }
+
+  #pricing-table td button {
+    padding: 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+  }
+
+  #pricing-table td button:hover {
+    background-color: #218838;
+  }
+
+  /* Dark mode adjustments for mobile */
+  html.dark-mode #pricing-table tbody tr,
+  html.dark-mode #quotation-table tbody tr {
+    background-color: #1a2634;
+  }
+
+  html.dark-mode #pricing-table td::before,
+  html.dark-mode #quotation-table td::before {
+    color: #fff;
+  }
+
+  html.dark-mode #pricing-table td,
+  html.dark-mode #quotation-table td {
+    color: #fff;
+  }
+  html.dark-mode #pricing-table td button {
+    background-color: #ff4c29;
+    color: #fff;
+  }
+  /* html.dark-mode .header-nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    color: #ff4c29;
+  } */
+}

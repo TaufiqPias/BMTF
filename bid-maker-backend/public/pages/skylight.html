@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Skylight - BMT</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode"); // Changed to <html>
+        }
+        // Only collapse .info-content on mobile initially
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+          document.querySelectorAll(".info-content").forEach((el) => {
+            el.classList.add("collapsed");
+          });
+        }
+      })();
+    </script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- Information Area -->
+      <div class="info-container">
+        <button class="toggle-btn">Toggle Information</button>
+        <div class="info-content">
+          <h2>Information</h2>
+          <p>
+            Fill out the form accordingly to generate a bid. The following
+            prices are provided as a ranged parameter taken from RepairBase
+            2024.
+          </p>
+          <p><b>Approximate Prices:</b></p>
+          <table>
+            <tr>
+              <th>Skylight Size</th>
+              <th>Removal</th>
+              <th>Replacement</th>
+              <th>Tar-Patch</th>
+            </tr>
+            <tr>
+              <td>Small <br />(14" x 30") or <br />(355mm x 762mm)</td>
+              <td>$300 - $500</td>
+              <td>$600 - $900</td>
+              <td>$150 - $300</td>
+            </tr>
+            <tr>
+              <td>Medium <br />(22" x 46") or <br />(559mm x 1168mm)</td>
+              <td>$500 - $800</td>
+              <td>$900 - $1,400</td>
+              <td>$250 - $450</td>
+            </tr>
+            <tr>
+              <td>Large <br />(32" x 60") or <br />(813mm x 1524mm)</td>
+              <td>$800 - $1,200</td>
+              <td>$1,400 - $2,000</td>
+              <td>$400 - $650</td>
+            </tr>
+          </table>
+          <br />
+          <a
+            href="https://cdn11.bigcommerce.com/s-ljmuy6/images/stencil/1280x1280/products/720/31665/velux-skylights-flat-roof-fcm1430-665x870__86165.1702088065.jpg?c=2"
+            target="_blank"
+            >Check Skylight Sizes</a
+          >
+          <br /><br />
+          <b>
+            <p style="color: brown">
+              ***Consult with your Team Lead before submitting the price.***
+            </p>
+          </b>
+          <b>
+            <p style="color: brown">
+              ***Please copy the bids before visiting other pages. Bids will not
+              be saved once redirected.***
+            </p>
+          </b>
+        </div>
+      </div>
+
+      <div class="container">
+        <button class="toggle-btn">Toggle Form</button>
+        <div class="division">
+          <h1>Roof Bid</h1>
+          <h2>Skylight Bids</h2>
+          <form id="Form">
+            <label for="bidPrefix"
+              >Bid Prefix (for conjunction bid - Use a colon after
+              prefix)</label
+            >
+            <input
+              type="text"
+              id="bidPrefix"
+              name="bidPrefix"
+              placeholder="Title: / Title-"
+            />
+
+            <label for="appl">Select any option:*</label>
+            <select id="appl" name="appl" required>
+              <option value="">--Select any--</option>
+              <option value="Remove">Remove</option>
+              <option value="Replace">Replace</option>
+              <option value="Tar-Patch">Tar-Patch</option>
+            </select>
+
+            <label for="count">How many Skylights?*</label>
+            <input type="number" id="count" name="count" step="1" required />
+
+            <label for="size">Skylight Size (Check Sizes in info):</label>
+            <input
+              type="text"
+              id="size"
+              name="size"
+              placeholder="i.e. 665mm x 970mm (Use Throat Dimension)"
+            />
+
+            <div id="debrisField" style="display: none">
+              <label for="debris">Generated debris (in cyds):</label>
+              <input type="number" id="debris" name="debris" step="1" />
+            </div>
+
+            <label for="additionalInfo">Additional information:</label>
+            <textarea
+              id="additionalInfo"
+              name="additionalInfo"
+              placeholder="Disclaimers or any other comment"
+            ></textarea>
+
+            <label for="conj">Make this bid conjunction to:</label>
+            <input
+              type="text"
+              id="conj"
+              name="conj"
+              placeholder="Bid name only"
+            />
+
+            <label for="price">Price (in USD):</label>
+            <input type="number" id="price" name="price" step="0.01" />
+
+            <button type="submit">Generate Bid</button>
+            <!-- <a href="https://www.zillow.com/" target="_blank" id="findpropsize">Find Property Size: Zillow</a> -->
+            <!-- <a href="https://www.google.com/maps" target="_blank" id="measuredr">Plan & Measure French Drain</a> -->
+          </form>
+        </div>
+      </div>
+
+      <!-- New Note Section -->
+      <div class="note-container">
+        <h2>Bids</h2>
+        <div id="notesList" class="notes-list">
+          <!-- Notes will be dynamically added here -->
+        </div>
+        <button id="copyAllBidsButton">Copy All Bids</button>
+        <a href="../index.html" id="home">
+          <ion-icon name="home"></ion-icon> Go Home</a
+        >
+      </div>
+    </div>
+
+    <div id="floatingMessage" class="floating-message">Copied!</div>
+
+    <!-- Script to Generate Bid -->
+    <script>
+      document.getElementById("appl").addEventListener("change", function () {
+        const debrisField = document.getElementById("debrisField");
+        if (this.value === "Remove") {
+          debrisField.style.display = "block";
+        } else {
+          debrisField.style.display = "none";
+          // Optional: Clear the debris value when hidden
+          document.getElementById("debris").value = "";
+        }
+      });
+    </script>
+    <script>
+      document
+        .getElementById("Form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          const bidPrefix = document.getElementById("bidPrefix").value;
+          const debris = document.getElementById("debris").value;
+          const appl = document.getElementById("appl").value;
+          const size = document.getElementById("size").value;
+          const count = document.getElementById("count").value;
+          const additionalInfo =
+            document.getElementById("additionalInfo").value;
+          const conj = document.getElementById("conj").value;
+          const price = parseFloat(document.getElementById("price").value || 0);
+
+          // Format the price with commas
+          const formattedPrice = price.toLocaleString("en-US", {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+
+          // Generate the bid text
+          let bidText;
+          if (appl === "Remove") {
+            bidText = `${bidPrefix} Need to remove ${count} skylight(s) - ${size} from the roof. Will generate approx ${debris} cyds of debris - heavy in nature. Will require ladders and safety gears to complete the job. ${
+              conj
+                ? `***Must be approved in conjunction to ${conj} bid.***`
+                : ""
+            } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          } else if (appl === "Replace") {
+            bidText = `${bidPrefix} Need to replace ${count} skylight(s) (Economy Grade) - ${size} at the roof. Will install flashing all around the skylight to prevent water leakage. Will require ladders and safety gears to complete the job. ${
+              conj
+                ? `***Must be approved in conjunction to ${conj} bid.***`
+                : ""
+            } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          } else if (appl === "Tar-Patch") {
+            bidText = `${bidPrefix} Need to repair ${count} skylight(s) - ${size} - to prevent water leakage. ***Tar-Patching Only***. Will require ladders and safety gears to complete the job. ${
+              conj
+                ? `***Must be approved in conjunction to ${conj} bid.***`
+                : ""
+            } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          } else {
+            alert(
+              "Please select an action (Clean or Remove or Replace or Repair)."
+            );
+            return; // Stop execution if no action is selected
+          }
+
+          // Save the bid as a note
+          saveBidAsNote(bidText);
+        });
+    </script>
+    <script src="script_other.js"></script>
+    <script src="..\dark_mode.js"></script>
+    <script src="blocker.js"></script>
+  </body>
+</html>

@@ -1,0 +1,719 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #b6e9c2;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 100vh;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Text Color Enforcement */
+:not(html.dark-mode) body {
+  color: #333;
+}
+
+:not(html.dark-mode) body p,
+:not(html.dark-mode) body b,
+:not(html.dark-mode) body h1,
+:not(html.dark-mode) body h2,
+:not(html.dark-mode) body h3,
+:not(html.dark-mode) body h4,
+:not(html.dark-mode) body h5,
+:not(html.dark-mode) body h6,
+:not(html.dark-mode) body label,
+:not(html.dark-mode) body .note,
+:not(html.dark-mode) body .info-content {
+  color: #333;
+}
+
+/* Layout */
+.main-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+  padding: 20px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.container {
+  width: 1000px;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.note-container,
+.info-container {
+  width: 400px;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.info-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.info-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.info-container::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+.container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.container::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+.notes-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.notes-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.notes-list::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+.division {
+  display: flex; /* Always visible by default */
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Form Elements */
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 15px;
+}
+
+#windowFields {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.windowInput {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  align-items: center;
+}
+
+.windowInput label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 0;
+}
+
+.windowInput input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+#description,
+#manualItemsInput,
+#countfield,
+#repairField,
+#capField,
+#flatrtContainer,
+#shthngContainer,
+#rftrContainer,
+#rventContainer,
+#rtoilContainer,
+#replaceField,
+#chmnContainer,
+#debrisFieldContainer,
+#reasonField,
+#applField,
+#coatField,
+#reltoField,
+#equipmentField,
+#rakefield,
+#typeField,
+#materialField,
+#storeFields,
+#moveFields,
+#removeFields,
+#sizeField,
+#countField,
+#replaceFields,
+#grinderField,
+#panelFields,
+#toprailcapsField,
+#debrisField,
+#fasciaField,
+#subField,
+#soffitField,
+#endcapfield {
+  grid-column: span 2;
+  padding: 10px;
+  background-color: #cbffd8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+html.dark-mode #description,
+html.dark-mode #manualItemsInput,
+html.dark-mode #countfield,
+html.dark-mode #repairField,
+html.dark-mode #capField,
+html.dark-mode #flatrtContainer,
+html.dark-mode #shthngContainer,
+html.dark-mode #rftrContainer,
+html.dark-mode #rventContainer,
+html.dark-mode #rtoilContainer,
+html.dark-mode #replaceField,
+html.dark-mode #chmnContainer,
+html.dark-mode #debrisFieldContainer,
+html.dark-mode #reasonField,
+html.dark-mode #applField,
+html.dark-mode #coatField,
+html.dark-mode #reltoField,
+html.dark-mode #equipmentField,
+html.dark-mode #sizeField,
+html.dark-mode #countField,
+html.dark-mode #rakefield,
+html.dark-mode #typeField,
+html.dark-mode #materialField,
+html.dark-mode #storeFields,
+html.dark-mode #moveFields,
+html.dark-mode #removeFields,
+html.dark-mode #replaceFields,
+html.dark-mode #grinderField,
+html.dark-mode #panelFields,
+html.dark-mode #toprailcapsField,
+html.dark-mode #debrisField,
+html.dark-mode #fasciaField,
+html.dark-mode #subField,
+html.dark-mode #soffitField,
+html.dark-mode #endcapfield {
+  background-color: #f8927e;
+  border: 1px solid #082032;
+}
+
+#hwhField {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.checkbox-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+#hwhField input[type="checkbox"] {
+  margin: 0;
+}
+
+.checkbox-title {
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+}
+
+#hwhField .checkbox-item label {
+  font-size: 14px;
+  color: #555;
+}
+
+.dynamic-field {
+  display: none;
+}
+
+/* Notes */
+.notes-list {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.note {
+  position: relative;
+  padding: 15px 5px 5px 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.copy-icon {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 16px;
+}
+
+.copy-icon:hover {
+  color: #0056b3;
+}
+
+.info-content {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Buttons and Links */
+button,
+a {
+  grid-column: span 2;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover,
+a:hover {
+  background-color: #218838;
+}
+
+#copyButton {
+  position: relative;
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#copyButton:hover {
+  background-color: #218838;
+}
+
+.floating-message {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 36px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+html.dark-mode .floating-message {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+.floating-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tables */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+h1 {
+  font-size: 30px;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.125em;
+}
+
+td,
+th {
+  border: 1px solid #28a745;
+  text-align: left;
+  padding: 2px;
+}
+
+tr:nth-child(even) {
+  background-color: #b1dfbc;
+}
+
+html.dark-mode td,
+html.dark-mode th {
+  border: 1px solid #ff4c29;
+}
+
+html.dark-mode tr:nth-child(even) {
+  background-color: #fcdbd4;
+  color: #333;
+}
+
+/* Dark Mode Styles */
+html.dark-mode body {
+  background-color: #082032 !important;
+  color: #fff !important;
+}
+
+html.dark-mode header {
+  background-color: #2c394b;
+}
+
+html.dark-mode .info-container a,
+html.dark-mode .main-container a,
+html.dark-mode button {
+  background-color: #334756;
+  color: #ff4c29;
+}
+
+html.dark-mode .main-container a:hover,
+html.dark-mode button:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+html.dark-mode .info-container,
+html.dark-mode .note-container,
+html.dark-mode .container,
+html.dark-mode .note {
+  background-color: #2c394b;
+  border-color: #082032;
+}
+
+html.dark-mode .notes-list {
+  background-color: #334756;
+  color: #fff;
+}
+
+html.dark-mode p,
+html.dark-mode b,
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3,
+html.dark-mode h4,
+html.dark-mode h5,
+html.dark-mode h6,
+html.dark-mode label,
+html.dark-mode .note,
+html.dark-mode .info-content {
+  color: #fff;
+}
+
+html.dark-mode .toggle-btn,
+html.dark-mode .profile-btn,
+html.dark-mode .container a,
+html.dark-mode #home {
+  background-color: #334756;
+  color: #ff4c29;
+}
+
+html.dark-mode .toggle-btn:hover,
+html.dark-mode .profile-btn:hover,
+html.dark-mode .container a:hover,
+html.dark-mode #home:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+/* Toggle Button Base Style */
+.toggle-btn {
+  display: none; /* Hidden by default on desktop */
+}
+
+/* Mobile-Specific Styles */
+@media (max-width: 1200px) {
+  body {
+    height: auto;
+    display: block;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .main-container {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    max-height: none;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  .container,
+  .note-container,
+  .info-container {
+    width: calc(100% - 10px);
+    max-width: calc(100% - 10px);
+    padding: 15px;
+    margin: 5px;
+    box-sizing: border-box;
+    overflow-y: visible;
+    position: relative;
+  }
+
+  /* Toggle Buttons */
+  .toggle-btn {
+    display: block; /* Shown on mobile */
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.dark-mode .toggle-btn {
+    background-color: #334756;
+    color: #ff4c29;
+  }
+
+  html.dark-mode .toggle-btn:hover {
+    background-color: #ff4c29;
+    color: #fff;
+  }
+
+  .toggle-btn:hover {
+    background-color: #218838;
+  }
+
+  /* Content Initial State */
+  .info-content.collapsed,
+  .division.collapsed {
+    display: none; /* Hidden when collapsed on mobile */
+  }
+  .info-content:not(.collapsed),
+  .division:not(.collapsed) {
+    display: flex; /* Visible when not collapsed */
+    flex-direction: column;
+  }
+
+  /* Note Section */
+  .note-container {
+    min-height: auto;
+  }
+
+  .notes-list {
+    height: 60px;
+    overflow-y: visible;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  .notes-list:not(:empty) {
+    height: auto;
+  }
+
+  .note {
+    overflow: visible;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  /* Form Adjustments */
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  #windowFields,
+  .windowInput {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reorder Sections */
+  .info-container {
+    order: 1;
+  }
+
+  .container {
+    order: 2;
+  }
+
+  .note-container {
+    order: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  label,
+  input,
+  select,
+  textarea,
+  button,
+  a {
+    font-size: 14px;
+  }
+
+  .toggle-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .note {
+    font-size: 12px;
+    padding: 10px 5px 5px 5px;
+  }
+
+  .container,
+  .note-container,
+  .info-container {
+    padding: 10px;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  label,
+  input,
+  select,
+  textarea,
+  button,
+  a {
+    font-size: 12px;
+  }
+
+  .toggle-btn {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .container,
+  .note-container,
+  .info-container {
+    padding: 8px;
+    margin: 5px;
+  }
+}
+
+/* Transitions */
+body,
+.container,
+.note-container,
+.info-container,
+.note,
+.notes-list,
+button,
+a,
+.toggle-btn {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}

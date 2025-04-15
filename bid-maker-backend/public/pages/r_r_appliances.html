@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Taufiq Pias">
+    <title>R&R Appliances - BMT</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function () {
+          const savedMode = localStorage.getItem("themeMode");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          if (savedMode === "dark" || (!savedMode && prefersDark)) {
+            document.documentElement.classList.add("dark-mode"); // Changed to <html>
+          }
+          // Only collapse .info-content on mobile initially
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+          document.querySelectorAll(".info-content").forEach((el) => {
+            el.classList.add("collapsed");
+          });
+        }
+        })();
+      </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M2K232X4B3');
+        </script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "qj1sdmrlho");
+</script>
+
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Information Area -->
+        <div class="info-container">
+            <button class="toggle-btn">Toggle Information</button>
+        <div class="info-content">
+          <h2>Information</h2>
+                <p>Fill out the form accordingly to generate a bid. The following prices are provided as a ranged
+                    parameter taken from RepairBase 2024. </p>
+                
+                <p style="color: brown;"><b>***Please check Local stores for prices before determining bid price.***</b>
+                    <br>
+                    <p><strong>Prices: Approximate Range</strong> (Economy Grade)</p>
+                    <b>Refrigerator:</b> $800
+                    <br>
+                    <b>Stove:</b> $550           
+                    <br>
+                    <b>Dishwasher:</b> $600
+                    <br>
+                    <b>Freezer:</b> $750
+                    <br>
+                    <b>Rangehood:</b> $300
+                    <br>
+                    <b>Oven:</b> $800
+                    <br>
+                    <b>Microwave:</b> $300
+                    <br>
+                    <b>Washer:</b> $600
+                    <br>
+                    <b>Dryer:</b> $600
+                    <br>
+                    <b>Hot Water Heater:</b> $1,250
+                    <br>
+                    <b>AC Unit:</b> $6,500
+                    <br>
+                    <b>Window AC:</b> $400
+                    <br>
+                    <b>Furnace:</b> $6,000
+                    <br>
+                    <b>Boiler:</b> $7,500
+                    <br>
+                    <b>Radiator:</b> $450
+                    <br>
+                    <b>Baseboard Radiators:</b> $150
+                </p>
+
+
+                <b>
+                    <p style="color: brown;">***Consult with your Team Lead before submitting the price.***</p>
+                </b>
+                <b>
+                    <p style="color: brown;">***Please copy the bids before visiting other pages. Bids will not be saved
+                        once redirected.***</p>
+                </b>
+            </div>
+        </div>
+
+
+
+
+        <div class="container">
+            <button class="toggle-btn">Toggle Form</button>
+            <div class="division">
+                <h1>Debris & Personals Bid</h1>
+                <h2>R&R Appliances Bids</h2>
+                <form id="rrappForm">
+                    <label for="bidPrefix">Bid Prefix (for conjunction bid - Use a colon after prefix)</label>
+                    <input type="text" id="bidPrefix" name="bidPrefix" placeholder="Title: / Title-">
+                
+                    <label for="action">Select an Action:*</label>
+                    <select id="action" name="action" required>
+                        <option value="">--Select an Action--</option>
+                        <option value="remove">Remove Appliance</option>
+                        <option value="replace">Replace Appliance</option>
+                    </select>
+                
+                    <label for="appl">Select an Appliance:*</label>
+                    <select id="appl" name="appl" required>
+                        <option value="">--Select an Appliance--</option>
+                        <option value="refrigerator">Refrigerator</option>
+                        <option value="stove">Stove</option>
+                        <option value="dishwasher">Dishwasher</option>
+                        <option value="freezer">Freezer</option>
+                        <option value="rangehood">Rangehood</option>
+                        <option value="oven">Oven</option>
+                        <option value="microwave">Microwave</option>
+                        <option value="washer">Washer</option>
+                        <option value="dryer">Dryer</option>
+                        <option value="hot water heater (40 gal)">Hot Water Heater</option>
+                        <option value="AC unit (3Ton 13 Seer)">AC Unit</option>
+                        <option value="window AC">Window AC</option>
+                        <option value="furnace">Furnace</option>
+                        <option value="boiler">Boiler</option>
+                        <option value="radiator">Radiator</option>
+                        <option value="baseboard radiators">Baseboard Radiators</option>
+                    </select>
+                
+                    <!-- Dynamic Fields for Remove -->
+                    <div id="removeFields" class="dynamic-field">
+                        <label for="servic">Select Damage Type:*</label>
+                        <select id="servic" name="servic">
+                            <option value="">--Select a Damage Type--</option>
+                            <option value="damaged">Damaged</option>
+                            <option value="heavily infested">Heavily Infested</option>
+                            <option value="heavily soiled">Soiled</option>
+                            <option value="vandalized">Vandalized</option>
+                        </select>
+                
+                    </div>
+                
+                    <!-- Dynamic Fields for Replace -->
+                    <div id="replaceFields" class="dynamic-field">
+                        <label for="additem">Select an Appliance for Additional Items:*</label>
+                        <select id="additem" name="additem">
+                            <option value="">--Additional Items--</option>
+                            <option value="">For Refrigerator Installation</option>
+                            <option value="Will require gas shut off valves and supply lines to complete the installation.">For Stove Installation</option>
+                            <option value="Will require discharge line (10 LF), angle stops and water supply lines to complete the installation.">For Dishwasher Installation</option>
+                            <option value="">For Freezer Installation</option>
+                            <option value="Will require aluminium exhaust line or duct to complete the installation.">For Rangehood Installation</option>
+                            <option value="">For Oven Installation</option>
+                            <option value="">For Microwave Installation</option>
+                            <option value="Will require discharge line (10 LF), angle stops and water supply lines to complete the installation.">For Washer Installation</option>
+                            <option value="Will require PVC exhaust line to complete the installation.">For Dryer Installation</option>
+                            <option value="Will require 10-20LF copper lines, 60 AMP circuit breaker and safety switch to complete the installation.">For Electric Hot Water Heater Installation</option>
+                            <option value="Will require 10-20LF copper lines, gas shut off valve, gas supply lines, 60 AMP circuit breaker, exhaust duct and safety switch to complete the installation.">For Gas Fueled Hot Water Heater Installation</option>
+                            <option value="Will require 10LF copper lines, 60 AMP circuit breaker, and safety switch to complete the installation.">For AC Unit Installation</option>
+                            <option value="">For Window AC Installation</option>
+                            <option value="Will require duct, 60 AMP circuit breaker, and safety switch to complete the installation.">For Furnace Installation</option>
+                            <option value="Will require expansion tank, 10-20LF copper lines, shark bites, ball valves, 60 AMP circuit breaker, and safety switch to complete the installation.">For Boiler Installation</option>
+                            <option value="Will require 10LF copper lines, shark bites, ball valves to complete the installation. ">For Radiator Installation</option>
+                            <option value="">For Baseboard Radiators Installation</option>
+                        </select>
+                    </div>
+                
+                    <label for="additionalInfo">Additional information:</label>
+                    <textarea id="additionalInfo" name="additionalInfo" placeholder="Disclaimers or any other comment"></textarea>
+                
+                    <label for="conj">Make this bid conjunction to:</label>
+                    <input type="text" id="conj" name="conj" placeholder="Bid name only">
+                
+                    <label for="price">Price (in USD):</label>
+                    <input type="number" id="price" name="price" step="0.01">
+                
+                    <button type="submit">Generate Bid</button>
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+        <!-- New Note Section -->
+        <div class="note-container">
+            <h2>Bids</h2>
+            <div id="notesList" class="notes-list">
+                <!-- Notes will be dynamically added here -->
+            </div>
+            <button id="copyAllBidsButton">Copy All Bids</button>
+            <a href="../index.html" id="home"> <ion-icon name="home"></ion-icon> Go Home</a>
+        </div>
+
+    </div>
+
+
+    <div id="floatingMessage" class="floating-message">Copied!</div>
+
+    <!-- Script to Dynamic Fields -->
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const actionDropdown = document.getElementById('action');
+    const removeFields = document.getElementById('removeFields');
+    const replaceFields = document.getElementById('replaceFields');
+
+    // Hide all dynamic fields initially
+    removeFields.style.display = 'none';
+    replaceFields.style.display = 'none';
+
+    // Add event listener to the action dropdown
+    actionDropdown.addEventListener('change', function () {
+        const selectedAction = actionDropdown.value;
+
+        // Hide all fields first
+        removeFields.style.display = 'none';
+        replaceFields.style.display = 'none';
+
+        // Show fields based on the selected action
+        if (selectedAction === 'remove') {
+            removeFields.style.display = 'block';
+        } else if (selectedAction === 'replace') {
+            replaceFields.style.display = 'block';
+        }
+    });
+});
+     </script>
+
+    <!-- Script to Generate Bid -->
+    <script>
+        document.getElementById('rrappForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form values
+            const bidPrefix = document.getElementById('bidPrefix').value;
+            const action = document.getElementById('action').value;
+            const appl = document.getElementById('appl').value;
+            const servic = document.getElementById('servic').value;
+            const additem = document.getElementById('additem').value;
+            const additionalInfo = document.getElementById('additionalInfo').value;
+            const conj = document.getElementById('conj').value;
+            const price = parseFloat(document.getElementById('price').value || 0);
+
+            // Format the price with commas
+            const formattedPrice = price.toLocaleString('en-US', {
+                style: 'decimal',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            });
+
+            let bidText;
+            if (action === 'remove') {
+                bidText = `${bidPrefix} Need to remove 1 ${appl}. Damage Type: ${servic}. Generated debris/appliance is heavy in nature. ${conj ? `***Must be approved in conjunction to ${conj} bid.***` : ''} ${additionalInfo}\nPrice: $${formattedPrice}`;
+            } else if (action === 'replace') {
+                bidText = `${bidPrefix} Need to replace 1 ${appl} (Economy Grade). ${additem}${conj ? `***Must be approved in conjunction to ${conj} bid.***` : ''} ${additionalInfo}\nPrice: $${formattedPrice}`;
+            } else {
+                alert('Please select an action (Remove or Replace).');
+                return; // Stop execution if no action is selected
+            }
+            // Save the bid as a note
+            saveBidAsNote(bidText);
+        }); 
+    </script>
+    <script src="blocker.js"></script>
+    <script src="script_other.js"></script>
+    <script src="..\dark_mode.js"></script>
+
+
+
+
+</body>
+
+</html>

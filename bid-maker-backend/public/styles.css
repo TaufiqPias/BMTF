@@ -1,0 +1,516 @@
+/* General Styles (unchanged) */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #b6e9c2;
+}
+
+/* Header Styles (unchanged) */
+header {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+/* Navigation Styles (unchanged) */
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.header-nav a:hover {
+  color: #044202;
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
+}
+
+/* Header Actions (unchanged) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.toggle-btn {
+  padding: 6px 12px;
+  background-color: #fff;
+  color: #28a745;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #e9ecef;
+}
+
+.profile-btn {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-btn:hover {
+  background-color: #218838;
+}
+
+/* Container Styles (unchanged) */
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+  margin: 0 10px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* Information Panel Styles (unchanged) */
+.info-panel {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.info-panel::-webkit-scrollbar {
+  width: 10px;
+}
+.info-panel::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.info-panel::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.info-panel p {
+  margin: 0 0 15px;
+  line-height: 1;
+}
+
+html.dark-mode .authorinfo {
+  background-color: #ff4d2900 !important;
+}
+html.dark-mode .authorinfo:hover {
+  color: #ff4c29 !important;
+}
+
+.Estimator {
+  margin-top: 10px;
+  padding: 6px 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Estimator:hover {
+  background-color: #218838;
+}
+
+.category-container {
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  background-color: #d5e9e4;
+  border-radius: 8px;
+  border: solid 1px #d3d0d0;
+  max-height: 680px;
+  overflow-y: scroll;
+}
+html.dark-mode .category-container {
+  background-color: #ff4d2917;
+
+  border-color: #082032;
+}
+
+.category-container::-webkit-scrollbar {
+  width: 10px;
+}
+.category-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.category-container::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+/* Categories and Other Styles (unchanged) */
+.category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.category {
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  scale: 0.95;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.category-buttons a {
+  padding: 6px 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.category-buttons a:hover {
+  background-color: #218838;
+}
+
+/* Search Input (unchanged) */
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+footer .footer {
+  color: #194b24ec;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 20px;
+  font-size: 10px;
+}
+
+/* Collapsible Toggle Button */
+.info-toggle {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for consistency */
+}
+
+.info-toggle:hover {
+  background-color: #218838;
+}
+
+/* Dark Mode Styles */
+html.dark-mode body {
+  background-color: #082032;
+  color: #fff;
+}
+
+html.dark-mode header {
+  background-color: #2c394b;
+}
+
+html.dark-mode .header-nav a {
+  color: #fff;
+}
+
+html.dark-mode .header-nav a:hover {
+  color: #ff4c29;
+}
+
+html.dark-mode .toggle-btn {
+  background-color: #334756;
+  color: #ff4c29;
+}
+
+html.dark-mode .toggle-btn:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+/* Add dark mode styles for info-toggle to match toggle-btn */
+html.dark-mode .info-toggle {
+  background-color: #2c394b;
+  color: #ff4c29;
+}
+
+html.dark-mode .info-toggle:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+html.dark-mode .profile-btn {
+  background-color: #334756;
+  border-color: #ff4c29;
+  color: #ff4c29;
+}
+
+html.dark-mode .profile-btn:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+html.dark-mode .container a {
+  background-color: #334756;
+  color: #ff4c29;
+}
+
+html.dark-mode .container a:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+html.dark-mode .column {
+  background-color: #334756;
+  color: #fff;
+}
+
+html.dark-mode .info-panel,
+html.dark-mode .category {
+  background-color: #2c394b;
+  border-color: #082032;
+}
+
+/* Media Queries for Mobile Only */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 8px 10px; /* Reduced side padding for more space */
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  .header-nav {
+    gap: 8px; /* Reduced gap to save space */
+    flex-wrap: nowrap; /* Prevent wrapping to keep links in one row */
+    justify-content: center; /* Center links for better appearance */
+    margin-top: 8px; /* Slightly reduced margin */
+  }
+
+  .header-nav a {
+    font-size: 12px; /* Smaller font size to fit links */
+    padding: 4px 6px; /* Reduced padding */
+  }
+
+  .header-actions {
+    gap: 8px; /* Reduced gap */
+    margin-top: 8px; /* Slightly reduced margin */
+    justify-content: center;
+  }
+
+  .toggle-btn,
+  .profile-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  /* Container Adjustments */
+  .container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .column {
+    margin: 0;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  /* Collapsible Information Section */
+  .info-toggle {
+    display: block; /* Show on mobile */
+  }
+
+  .info-panel {
+    display: none; /* Hidden by default on mobile */
+  }
+
+  .info-panel.active {
+    display: block; /* Show when toggled */
+  }
+
+  .info-panel p,
+  .info-panel ol {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Search Input for Mobile */
+  #searchInput {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+
+  /* Categories Adjustments */
+  .category-section {
+    gap: 8px;
+  }
+
+  .category {
+    padding: 10px;
+  }
+
+  .category h3 {
+    font-size: 16px;
+  }
+
+  .category-buttons a {
+    padding: 5px 8px;
+    font-size: 12px;
+    flex: 1 1 45%; /* Two per row */
+    text-align: center;
+  }
+
+  /* Footer Adjustments */
+  footer .footer {
+    left: 10px;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-container {
+    padding: 8px 5px; /* Further reduce padding for ~390px viewports */
+  }
+
+  .header-nav {
+    gap: 6px; /* Further reduce gap */
+  }
+
+  .header-nav a,
+  .toggle-btn,
+  .profile-btn {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  .category-buttons a {
+    flex: 1 1 100%; /* One per row */
+  }
+
+  header h1 {
+    font-size: 20px; /* Match existing 480px query for consistency */
+  }
+}
+
+/* Transitions (unchanged) */
+body,
+header,
+.toggle-btn,
+.profile-btn,
+.column,
+.info-panel,
+.category,
+.info-toggle {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body .info-panel a[href="mailto:taufiq.xenox@gmail.com"] {
+  color: #044202;
+  text-decoration: none;
+}
+
+body .info-panel a[href="https://taufiqpias.github.io/portfolio"]
+{
+  color: #044202;
+  text-decoration: none;
+}
+
+/* Override inline style for email link in dark mode */
+html.dark-mode a[href="mailto:taufiq.xenox@gmail.com"] {
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+html.dark-mode a[href="mailto:taufiq.xenox@gmail.com"]:hover {
+  color: #e6e6e6; /* Slightly off-white for hover effect, optional */
+}
+
+/* Override inline style for email link in dark mode */
+html.dark-mode a[href="https://taufiqpias.github.io/portfolio"]
+{
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+html.dark-mode a[href="https://taufiqpias.github.io/portfolio"]:hover
+{
+  color: #e6e6e6; /* Slightly off-white for hover effect, optional */
+}

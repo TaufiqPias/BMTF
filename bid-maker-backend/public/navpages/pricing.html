@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Pricing - Bid Maker Tool</title>
+    <link rel="icon" type="image/x-icon" href="../Images/Favicon.png" />
+    <link rel="stylesheet" href="../auth.css" />
+
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>Bid Maker Tool</h1>
+        <nav class="header-nav">
+          <a href="../index.html">Home</a>
+          <a href="./pricing.html">Pricing</a>
+          <a href="#bid-demo">Bid Demo</a>
+          <a href="./analytics.html">Analytics</a>
+          <a href="https://forms.gle/KLGN4DuJQoBhE3nq9" target="_blank"
+            >Report</a
+          >
+        </nav>
+        <div class="header-actions">
+          <button id="darkModeToggle" class="toggle-btn">Dark Mode</button>
+          <a href="../auth.html" class="profile-btn">Log In</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="pricing-container">
+      <h2>Pricing Plans</h2>
+      <p>Choose a plan to continue using Bid Maker Tool.</p>
+      <!-- Add pricing details here -->
+      <div class="pricing-plan">
+        <h3>Monthly Plan</h3>
+        <p style="font-size: 30px; font-weight: 700">BDT 500.00</p>
+        <p>Unlimited Bids</p>
+        <p>Unlimited Estimates</p>
+        <p>Unlimited Invoice</p>
+        <a href="#" class="action-btn2">Subscribe</a> <!-- Figure out the subscription API method-->
+      </div>
+      <div class="pricing-plan">
+        <h3>Yearly Plan</h3>
+        <p style="font-size: 30px; font-weight: 700">BDT 5,500.00</p>
+        <p>Unlimited Bids</p>
+        <p>Unlimited Estimates</p>
+        <p>Unlimited Invoice</p>
+        <a href="#" class="action-btn2">Subscribe</a>   <!-- Figure out the subscription API method-->
+      </div>
+    </div>
+
+    <script src="../dark_mode.js"></script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9309349ba807b0be',t:'MTc0NDY5NjY0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
