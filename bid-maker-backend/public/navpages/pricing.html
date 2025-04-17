@@ -24,7 +24,7 @@
     <header>
       <div class="header-container">
         <h1>Bid Maker Tool</h1>
-        <nav class="header-nav">
+        <nav class="header-nav" style="display: none">
           <a href="../index.html">Home</a>
           <a href="./pricing.html">Pricing</a>
           <a href="#bid-demo">Bid Demo</a>
@@ -50,7 +50,7 @@
         <p>Unlimited Bids</p>
         <p>Unlimited Estimates</p>
         <p>Unlimited Invoice</p>
-        <a href="#" class="action-btn2">Subscribe</a> <!-- Figure out the subscription API method-->
+        <a href="#" class="action-btn2">Subscribe</a>
       </div>
       <div class="pricing-plan">
         <h3>Yearly Plan</h3>
@@ -58,11 +58,33 @@
         <p>Unlimited Bids</p>
         <p>Unlimited Estimates</p>
         <p>Unlimited Invoice</p>
-        <a href="#" class="action-btn2">Subscribe</a>   <!-- Figure out the subscription API method-->
+        <a href="#" class="action-btn2">Subscribe</a>
       </div>
     </div>
 
     <script src="../dark_mode.js"></script>
+    <script>
+      // Check subscription status on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/api/check-trial", {
+          method: "GET",
+          credentials: "include", // Include cookies for session authentication
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const nav = document.querySelector(".header-nav");
+            if (data.message === "Active") {
+              // Valid subscription (trial or paid)
+              nav.style.display = "block";
+            }
+            // No else needed: nav is already hidden by default (display: none)
+          })
+          .catch((error) => {
+            console.error("Error checking subscription status:", error);
+            // Nav remains hidden (default display: none)
+          });
+      });
+    </script>
     <script>
       (function () {
         function c() {
@@ -71,6 +93,41 @@
             var d = b.createElement("script");
             d.innerHTML =
               "window.__CF$cv$params={r:'9309349ba807b0be',t:'MTc0NDY5NjY0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9317bbca484fadd8',t:'MTc0NDg0ODk4NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }

@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
     error.classList.add("active");
   };
 
-  // Validate mobile number (basic: digits only, 7-15 characters)
+  // Validate mobile number: must start with "01" and be exactly 11 digits
   const validateMobile = (mobile) => {
-    const mobileRegex = /^\d{7,15}$/;
+    const mobileRegex = /^01\d{9}$/;
     return mobileRegex.test(mobile);
   };
 
@@ -67,8 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!validateMobile(mobile)) {
       showError(
         document.getElementById("signup-mobile"),
-        "Enter a valid mobile number (7-15 digits)"
+        "Incorrect Mobile Number"
       );
+      // alert("Incorrect Mobile Number");
       return;
     }
 
