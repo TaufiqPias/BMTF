@@ -1,0 +1,365 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10px;
+  background-color: #b6e9c2; /* Light mode background from invoice.css */
+  color: #333; /* Light mode text color from both CSS */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Text Color Enforcement */
+body:not(.dark-mode) {
+  color: #333;
+}
+
+body:not(.dark-mode) h1,
+body:not(.dark-mode) h2,
+body:not(.dark-mode) label,
+body:not(.dark-mode) #exifData {
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  max-width: 1200px !important;
+  margin: 0 auto;
+  background: white; /* Light mode container background from invoice.css */
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+}
+
+.left-panel {
+  width: 100%;
+}
+
+.right-panel {
+  max-width: 300px;
+}
+
+.right-panel h2 {
+  font-size: 18px; /* Reduced font size for "Selected Images" heading */
+}
+
+h1 {
+  margin: 0 0 15px;
+  font-size: 32px; /* Matching prices.css header h1 */
+  text-align: center;
+  color: #2c3e50; /* From invoice.css */
+  transition: color 0.3s ease;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px; /* From invoice.css info-section label */
+  color: #2c3e50; /* From invoice.css */
+  transition: color 0.3s ease;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px; /* Consistent padding from invoice.css */
+  border: 1px solid #ddd; /* Light mode border from invoice.css */
+  border-radius: 4px;
+  font-size: 14px; /* From invoice.css */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+input[type="file"] {
+  padding: 3px; /* Adjusted for file input appearance */
+}
+
+input[type="color"] {
+  height: 36px; /* Improved visibility */
+}
+
+select {
+  height: 34px; /* Match input height */
+}
+
+button {
+  margin-top: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #28a745; /* Green button from both CSS */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; /* From invoice.css buttons */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838; /* Darker green from both CSS */
+  transform: scale(1.01); /* Slight scale effect from prices.css */
+}
+
+a {
+  display: block;
+  margin: 10px auto;
+  padding: 10px; /* Match #download-pdf padding */
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; /* Match #download-pdf font-size */
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+  background-color: #39834a;
+  transform: scale(1.01); /* Slight scale effect from prices.css */
+}
+
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.preview-container img {
+  max-width: 100%;
+  height: auto;
+  padding: 3px;
+  object-fit: contain;
+  border: 1px solid #ddd; /* From invoice.css logo border */
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.selected-images-list {
+  font-size: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.selected-images-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.selected-images-list li span:first-child {
+  max-width: 150px; /* Limit the width to control truncation */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#exifData {
+  white-space: pre-wrap;
+  background: #f9f9f9; /* Light mode table row background from prices.css */
+  padding: 10px;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 12px; /* From prices.css table */
+  border: 1px solid #4bd345; /* Table border from prices.css */
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+#exifData::-webkit-scrollbar {
+  width: 10px;
+}
+
+#exifData::-webkit-scrollbar-track {
+  background: #f1f1f1; /* From prices.css scrollbar */
+  border-radius: 5px;
+}
+
+#exifData::-webkit-scrollbar-thumb {
+  background-color: #28a745; /* From prices.css scrollbar */
+  border-radius: 5px;
+}
+
+#exifData::-webkit-scrollbar-thumb:hover {
+  background-color: #218838;
+}
+
+#progress {
+  display: none;
+  margin-top: 10px;
+  font-style: italic;
+  color: #757575; /* From prices.css h2 */
+  transition: color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+html.dark-mode body {
+  background-color: #082032; /* Dark mode background from both CSS */
+  color: #fff;
+}
+
+html.dark-mode .container {
+  background-color: rgba(44, 57, 75, 0.9); /* From invoice.css dark mode */
+  border-color: #082032;
+}
+
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode label,
+html.dark-mode #exifData,
+html.dark-mode #progress {
+  color: #fff;
+}
+
+html.dark-mode input,
+html.dark-mode select {
+  border-color: #334756; /* From prices.css dark mode */
+  background-color: rgba(44, 57, 75, 0.9);
+  color: #fff;
+}
+
+html.dark-mode button {
+  background-color: #334756; /* From both CSS dark mode buttons */
+  color: #ff4c29; /* Orange accent from both CSS */
+}
+
+html.dark-mode button:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+html.dark-mode a {
+  background-color: #334756; /* From both CSS dark mode buttons */
+  color: #ff4c29; /* Orange accent from both CSS */
+}
+
+html.dark-mode a:hover {
+  background-color: #ff4c29;
+  color: #fff;
+}
+
+html.dark-mode .preview-container img {
+  border-color: #ff4c29; /* From prices.css dark mode table borders */
+}
+
+html.dark-mode .selected-images-list {
+  border-left-color: #fff; /* Adjust border color in dark mode */
+}
+
+html.dark-mode #exifData {
+  background-color: #1a2634; /* From prices.css dark mode table rows */
+  border-color: #ff4c29;
+}
+
+html.dark-mode #exifData::-webkit-scrollbar-track {
+  background: #2e3f4d54; /* From prices.css dark mode scrollbar */
+}
+
+html.dark-mode #exifData::-webkit-scrollbar-thumb {
+  background-color: #334756;
+}
+
+html.dark-mode #exifData::-webkit-scrollbar-thumb:hover {
+  background-color: #ff4c29;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  body {
+    padding: 5px; /* From invoice.css mobile */
+  }
+
+  .container {
+    flex-direction: column; /* Stack panels vertically on mobile */
+    padding: 10px;
+  }
+
+  .right-panel {
+    max-width: 100%; /* Full width on mobile */
+    margin-top: 20px; /* Add some spacing above the Selected Images section */
+  }
+
+  h1 {
+    font-size: 24px; /* From prices.css mobile header */
+  }
+
+  .section {
+    margin-bottom: 15px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 12px;
+    padding: 6px; /* Reduced padding for mobile */
+  }
+
+  button {
+    padding: 8px;
+  }
+
+  .preview-container img {
+    max-width: 100%;
+    height: auto;
+    padding: 3px;
+    object-fit: contain;
+    border: 1px solid #ddd; /* From invoice.css logo border */
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+
+  #exifData {
+    font-size: 10px;
+    max-height: 150px;
+  }
+}
+
+/* Desktop Responsiveness */
+@media (min-width: 601px) {
+  .container {
+    max-width: 800px; /* From invoice.css desktop */
+  }
+
+  .input-columns {
+    display: flex;
+    gap: 20px;
+  }
+
+  .input-columns .column {
+    flex: 1;
+  }
+
+  .input-columns .column label {
+    margin-bottom: 5px;
+  }
+
+  .input-columns .column input {
+    margin-bottom: 10px;
+  }
+}

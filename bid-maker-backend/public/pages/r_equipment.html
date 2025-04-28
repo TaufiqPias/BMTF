@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Rent Equipment - BMT</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode"); // Changed to <html>
+        }
+        // Only collapse .info-content on mobile initially
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+          document.querySelectorAll(".info-content").forEach((el) => {
+            el.classList.add("collapsed");
+          });
+        }
+      })();
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- Information Area -->
+      <div class="info-container">
+        <button class="toggle-btn">Toggle Information</button>
+        <div class="info-content">
+          <h2>Information</h2>
+          <p>
+            Fill out the form accordingly to generate a bid. The following
+            prices are provided as a ranged parameter taken from RepairBase
+            2024.
+          </p>
+          <p><b>Approximate Prices:</b></p>
+          <table>
+            <tr>
+              <th><strong>Equipment</strong></th>
+              <th><strong>Approx. Daily Rate (USD)</strong></th>
+              <th><strong>Notes</strong></th>
+            </tr>
+            <tr>
+              <td>Backhoe</td>
+              <td>$350.00 – $600.00</td>
+              <td>Compact models more common</td>
+            </tr>
+            <tr>
+              <td>Boom Lift</td>
+              <td>$400.00 – $900.00</td>
+              <td>50ft–80ft lifts common</td>
+            </tr>
+            <tr>
+              <td>Bobcat (Skid Steer)</td>
+              <td>$200.00 – $450.00</td>
+              <td>Popular for construction</td>
+            </tr>
+            <tr>
+              <td>Cherry Picker</td>
+              <td>$350.00 – $700.00</td>
+              <td>Similar to boom lift</td>
+            </tr>
+            <tr>
+              <td>Compactor</td>
+              <td>$120.00 – $350.00</td>
+              <td>Plate compactor cheaper</td>
+            </tr>
+            <tr>
+              <td>Concrete Mixer</td>
+              <td>$120.00 – $300.00</td>
+              <td>Electric mixers cheaper</td>
+            </tr>
+            <tr>
+              <td>Concrete Pump</td>
+              <td>$800.00 – $2,000.00+</td>
+              <td>Truck-mounted pumps costly</td>
+            </tr>
+            <tr>
+              <td>Concrete Saw</td>
+              <td>$100.00 – $250.00</td>
+              <td>Walk-behind saws more expensive</td>
+            </tr>
+            <tr>
+              <td>Concrete Vibrator</td>
+              <td>$80.00 – $200.00</td>
+              <td>Internal vibrators common</td>
+            </tr>
+            <tr>
+              <td>Crane</td>
+              <td>$1,500.00 – $10,000.00+</td>
+              <td>Large cranes extremely expensive</td>
+            </tr>
+            <tr>
+              <td>Dump Truck</td>
+              <td>$600.00 – $1,500.00</td>
+              <td>Dump fees may apply</td>
+            </tr>
+            <tr>
+              <td>Excavator</td>
+              <td>$500.00 – $1,800.00</td>
+              <td>Mini-excavators ~$500.00/day</td>
+            </tr>
+            <tr>
+              <td>Forklift</td>
+              <td>$200.00 – $500.00</td>
+              <td>Electric forklifts common</td>
+            </tr>
+            <tr>
+              <td>Genie Lift (Scissor)</td>
+              <td>$250.00 – $600.00</td>
+              <td>20ft–40ft common</td>
+            </tr>
+            <tr>
+              <td>Jackhammer</td>
+              <td>$75.00 – $200.00</td>
+              <td>Electric models cheaper</td>
+            </tr>
+            <tr>
+              <td>Manlift</td>
+              <td>$300.00 – $800.00</td>
+              <td>Articulating boom lifts</td>
+            </tr>
+            <tr>
+              <td>Mini-Excavator</td>
+              <td>$250.00 – $600.00</td>
+              <td>1–3 ton models</td>
+            </tr>
+            <tr>
+              <td>Plate Compactor</td>
+              <td>$100.00 – $250.00</td>
+              <td>Single-direction models</td>
+            </tr>
+            <tr>
+              <td>Power Trowel</td>
+              <td>$150.00 – $350.00</td>
+              <td>Ride-on models pricier</td>
+            </tr>
+            <tr>
+              <td>Scaffolding</td>
+              <td>$150.00 – $500.00</td>
+              <td>Per section or bundle</td>
+            </tr>
+            <tr>
+              <td>Scissor Lift</td>
+              <td>$200.00 – $600.00</td>
+              <td>19ft–30ft common</td>
+            </tr>
+            <tr>
+              <td>Skid Steer</td>
+              <td>$200.00 – $450.00</td>
+              <td>Similar to Bobcat</td>
+            </tr>
+            <tr>
+              <td>Telehandler</td>
+              <td>$400.00 – $900.00</td>
+              <td>Extendable forklifts</td>
+            </tr>
+            <tr>
+              <td>Trench Box</td>
+              <td>$300.00 – $700.00</td>
+              <td>Steel trench shields</td>
+            </tr>
+            <tr>
+              <td>U-Haul Truck</td>
+              <td>$60.00 – $200.00</td>
+              <td>Varies by size (10ft–26ft)</td>
+            </tr>
+            <tr>
+              <td>Water Truck</td>
+              <td>$150.00 – $400.00</td>
+              <td>Varies by size (2000gal–6000gal)</td>
+            </tr>
+          </table>
+          <h3>This bid must be in conjunction with other repair bid.</h3>
+          <b>
+            <p style="color: brown">
+              ***Consult with your Team Lead before submitting the price.***
+            </p>
+          </b>
+          <b>
+            <p style="color: brown">
+              ***Please copy the bids before visiting other pages. Bids will not
+              be saved once redirected.***
+            </p>
+          </b>
+        </div>
+      </div>
+
+      <div class="container">
+        <button class="toggle-btn">Toggle Form</button>
+        <div class="division">
+          <h1>Other Bid</h1>
+          <h2>Rent Equipment Bids</h2>
+          <form id="Form">
+            <label for="bidPrefix"
+              >Bid Prefix (for conjunction bid - Use a colon after
+              prefix)</label
+            >
+            <input
+              type="text"
+              id="bidPrefix"
+              name="bidPrefix"
+              placeholder="Title: / Title-"
+            />
+
+            <label for="appl">Select an Equipment for renting:*</label>
+            <select id="appl" name="appl" required>
+              <option value="">--Select any--</option>
+              <option value="backhoe">Backhoe</option>
+              <option value="boom lift">Boom Lift</option>
+              <option value="bobcat">Bobcat</option>
+              <option value="cherry picker">Cherry Picker</option>
+              <option value="compactor">Compactor</option>
+              <option value="concrete mixer">Concrete Mixer</option>
+              <option value="concrete pump">Concrete Pump</option>
+              <option value="concrete saw">Concrete Saw</option>
+              <option value="concrete vibrator">Concrete Vibrator</option>
+              <option value="crane">Crane</option>
+              <option value="dump truck">Dump Truck</option>
+              <option value="excavator">Excavator</option>
+              <option value="forklift">Forklift</option>
+              <option value="genie lift">Genie Lift</option>
+              <option value="jackhammer">Jackhammer</option>
+              <option value="manlift">Manlift</option>
+              <option value="mini excavator">Mini-Excavator</option>
+              <option value="plate compactor">Plate Compactor</option>
+              <option value="power trowel">Power Trowel</option>
+              <option value="scaffolding">Scaffolding</option>
+              <option value="scissor hoist">Scissor Hoist</option>
+              <option value="scissor lift">Scissor Lift</option>
+              <option value="skid steer">Skid Steer</option>
+              <option value="telehandler">Telehandler</option>
+              <option value="trench box">Trench Box</option>
+              <option value="u-haul">U-Haul</option>
+              <option value="water truck">Water Truck</option>
+            </select>
+
+            <label for="count">For How Many Days:*</label>
+            <input type="number" id="count" name="count" step="1" required />
+
+            <label for="additionalInfo">Additional information:</label>
+            <textarea
+              id="additionalInfo"
+              name="additionalInfo"
+              placeholder="Disclaimers or any other comment"
+            ></textarea>
+
+            <label for="conj">Make this bid conjunction to:</label>
+            <input
+              type="text"
+              id="conj"
+              name="conj"
+              placeholder="Bid name only"
+            />
+
+            <label for="price">Price (in USD):</label>
+            <input type="number" id="price" name="price" step="0.01" />
+
+            <button type="submit">Generate Bid</button>
+            <!-- <a href="https://www.zillow.com/" target="_blank" id="findpropsize">Find Property Size: Zillow</a> -->
+            <!-- <a href="https://www.google.com/maps" target="_blank" id="measuredr">Plan & Measure French Drain</a> -->
+          </form>
+        </div>
+      </div>
+
+      <!-- New Note Section -->
+      <div class="note-container">
+        <h2>Bids</h2>
+        <div id="notesList" class="notes-list">
+          <!-- Notes will be dynamically added here -->
+        </div>
+        <button id="copyAllBidsButton">Copy All Bids</button>
+        <a href="../index.html" id="home">
+          <ion-icon name="home"></ion-icon> Go Home</a
+        >
+      </div>
+    </div>
+
+    <div id="floatingMessage" class="floating-message">Copied!</div>
+
+    <!-- Script to Generate Bid -->
+    <script>
+      document
+        .getElementById("Form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          const bidPrefix = document.getElementById("bidPrefix").value;
+          const appl = document.getElementById("appl").value;
+          const count = document.getElementById("count").value;
+          const additionalInfo =
+            document.getElementById("additionalInfo").value;
+          const conj = document.getElementById("conj").value;
+          const price = parseFloat(document.getElementById("price").value || 0);
+
+          // Format the price with commas
+          const formattedPrice = price.toLocaleString("en-US", {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+
+          // Generate the bid text
+          const bidText = `${bidPrefix} Need to rent 1 ${appl} from the local equipment rental companies for ${count} day(s) to speed up the task process and complete as soon as possible. ***Once completed, we will contact the rental company and return the equipment accordingly.*** NO EQUIPMENT WILL BE LEFT UNATTENDED AT THE PROPERTY. Invoice for renting the equipment will be provided. ${
+            conj ? `***Must be approved in conjunction to ${conj} bid.***` : ""
+          } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          // Save the bid as a note
+          saveBidAsNote(bidText);
+        });
+    </script>
+    <script src="script_other.js"></script>
+    <script src="..\dark_mode.js"></script>
+    <script src="blocker.js"></script>
+  </body>
+</html>

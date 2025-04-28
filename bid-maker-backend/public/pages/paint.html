@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Paint - BMT</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode"); // Changed to <html>
+        }
+        // Only collapse .info-content on mobile initially
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+          document.querySelectorAll(".info-content").forEach((el) => {
+            el.classList.add("collapsed");
+          });
+        }
+      })();
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- Information Area -->
+      <div class="info-container">
+        <button class="toggle-btn">Toggle Information</button>
+        <div class="info-content">
+          <h2>Information</h2>
+          <p>
+            Fill out the form accordingly to generate a bid. The following
+            prices are provided as a ranged parameter taken from RepairBase
+            2024.
+          </p>
+          <p><b>Approximate Prices:</b></p>
+          <table>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+            </tr>
+            <tr>
+              <td>
+                Prep for Paint - Exterior Wall - Wood Siding - 1st Story - Per
+                SF
+              </td>
+              <td>$1.21</td>
+            </tr>
+            <tr>
+              <td>
+                Prep for Paint - Exterior Wall - Wood Siding - 2nd Story - Per
+                SF
+              </td>
+              <td>$1.54</td>
+            </tr>
+            <tr>
+              <td>
+                Prep for Paint - Interior Wall/Ceiling - Drywall/Plaster - Per
+                SF
+              </td>
+              <td>$1.25</td>
+            </tr>
+            <tr>
+              <td>
+                Prep for Paint - Interior Wall/Ceiling - Drywall/Plaster - Per
+                SF
+              </td>
+              <td>$1.60</td>
+            </tr>
+            <tr>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <td>Complete Exterior Paint - 1 Story - 1 Coat - Per SF</td>
+              <td>$1.23</td>
+            </tr>
+            <tr>
+              <td>Complete Exterior Paint - 1 Story - 2 Coats - Per SF</td>
+              <td>$1.78</td>
+            </tr>
+            <tr>
+              <td>Complete Exterior Paint - 2 Story - 1 Coat - Per SF</td>
+              <td>$1.43</td>
+            </tr>
+            <tr>
+              <td>Complete Exterior Paint - 2 Story - 2 Coats - Per SF</td>
+              <td>$2.07</td>
+            </tr>
+            <tr>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <td>
+                Paint Exterior Walls - 1 Story - 1 Coat - Min charge up to 100
+                SF
+              </td>
+              <td>$83.79</td>
+            </tr>
+            <tr>
+              <td>Paint Exterior Walls - 1 Story - 1 Coat - Per SF</td>
+              <td>$0.95</td>
+            </tr>
+            <tr>
+              <td>Paint Exterior Walls - 1 Story - 2 Coats - Per SF</td>
+              <td>$1.58</td>
+            </tr>
+            <tr>
+              <td>---</td>
+              <td>---</td>
+            </tr>
+            <tr>
+              <td>Paint Walls/Ceiling - 1 Coat - Per SF</td>
+              <td>$0.72</td>
+            </tr>
+            <tr>
+              <td>Paint Walls/Ceiling - 2 Coats - Per SF</td>
+              <td>$1.54</td>
+            </tr>
+            <tr>
+              <td>
+                Paint Walls - Masonry - Waterproof (Drylok or Similar product) -
+                2 Coats - Per SF
+              </td>
+              <td>$2.67</td>
+            </tr>
+          </table>
+          <b>
+            <p style="color: brown">
+              ***Consult with your Team Lead before submitting the price.***
+            </p>
+          </b>
+          <b>
+            <p style="color: brown">
+              ***Please copy the bids before visiting other pages. Bids will not
+              be saved once redirected.***
+            </p>
+          </b>
+        </div>
+      </div>
+
+      <div class="container">
+        <button class="toggle-btn">Toggle Form</button>
+        <div class="division">
+          <h1>Other Bid</h1>
+          <h2>Paint Bids</h2>
+          <form id="Form">
+            <label for="bidPrefix"
+              >Bid Prefix (for conjunction bid - Use a colon after
+              prefix)</label
+            >
+            <input
+              type="text"
+              id="bidPrefix"
+              name="bidPrefix"
+              placeholder="Title: / Title-"
+            />
+
+            <label for="action">Select an Action:*</label>
+            <select id="action" name="action" required>
+              <option value="">--Select an Action--</option>
+              <option value="prep for paint">Prep for Paint</option>
+              <option value="paint">Paint</option>
+            </select>
+
+            <label for="appl">Select a Surface:*</label>
+            <select id="appl" name="appl" required>
+              <option value="">--Select any--</option>
+              <option value="interior wall">Interior Wall</option>
+              <option value="exterior wall">Exterior Wall</option>
+              <option value="ceiling">Ceiling</option>
+              <option value="interior door">Interior Door</option>
+              <option value="exterior door">Exterior Door</option>
+              <option value="garage door">Garage Door</option>
+            </select>
+
+            <label for="loc">Location:*</label>
+            <input
+              type="text"
+              id="loc"
+              name="loc"
+              placeholder="right, left, front, back, bedroom 1, bathroom, etc."
+              required
+            />
+
+            <label for="length">Length: (ft)*</label>
+            <input type="number" id="length" name="length" step="1" required />
+            <label for="width">Width: (ft)*</label>
+            <input type="number" id="width" name="width" step="1" required />
+
+            <label for="additionalInfo">Additional information:</label>
+            <textarea
+              id="additionalInfo"
+              name="additionalInfo"
+              placeholder="Disclaimers or any other comment"
+            ></textarea>
+
+            <label for="conj">Make this bid conjunction to:</label>
+            <input
+              type="text"
+              id="conj"
+              name="conj"
+              placeholder="Bid name only"
+            />
+
+            <label for="price">Price (in USD):</label>
+            <input type="number" id="price" name="price" step="0.01" />
+
+            <button type="submit">Generate Bid</button>
+            <!-- <a href="https://www.zillow.com/" target="_blank" id="findpropsize">Find Property Size: Zillow</a> -->
+            <!-- <a href="https://www.google.com/maps" target="_blank" id="measuredr">Plan & Measure French Drain</a> -->
+          </form>
+        </div>
+      </div>
+
+      <!-- New Note Section -->
+      <div class="note-container">
+        <h2>Bids</h2>
+        <div id="notesList" class="notes-list">
+          <!-- Notes will be dynamically added here -->
+        </div>
+        <button id="copyAllBidsButton">Copy All Bids</button>
+        <a href="../index.html" id="home">
+          <ion-icon name="home"></ion-icon> Go Home</a
+        >
+      </div>
+    </div>
+
+    <div id="floatingMessage" class="floating-message">Copied!</div>
+
+    <!-- Script to Generate Bid -->
+    <script>
+      document
+        .getElementById("Form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          const bidPrefix = document.getElementById("bidPrefix").value;
+          const action = document.getElementById("action").value;
+          const appl = document.getElementById("appl").value;
+          const loc = document.getElementById("loc").value;
+          const length = document.getElementById("length").value;
+          const width = document.getElementById("width").value;
+          const additionalInfo =
+            document.getElementById("additionalInfo").value;
+          const conj = document.getElementById("conj").value;
+          const price = parseFloat(document.getElementById("price").value || 0);
+
+          // Format the price with commas
+          const formattedPrice = price.toLocaleString("en-US", {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+
+          // Generate the bid text
+          let bidText;
+          if (action === "prep for paint") {
+            bidText = `${bidPrefix} Need to prepare ${length} x ${width} = ${
+              length * width
+            } SF of ${appl} at the ${loc} of the property for paint - to increase the market value of the property. Once completed the ${appl} will be ready for paint. ${
+              conj
+                ? `***Must be approved in conjunction to ${conj} bid.***`
+                : ""
+            } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          } else if (action === "paint") {
+            bidText = `${bidPrefix} Need to paint ${length} x ${width} = ${
+              length * width
+            } SF of ${appl} at the ${loc} of the property to increase the market value. The paint work will be completed to match the existing style unless requested otherwise. ${
+              conj
+                ? `***Must be approved in conjunction to ${conj} bid.***`
+                : ""
+            } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          } else {
+            alert("Please select an action.");
+            return; // Stop execution if no action is selected
+          }
+          // Save the bid as a note
+          saveBidAsNote(bidText);
+        });
+    </script>
+    <script src="script_other.js"></script>
+    <script src="..\dark_mode.js"></script>
+    <script src="blocker.js"></script>
+  </body>
+</html>

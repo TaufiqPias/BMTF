@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Demolish Other Structure - BMT</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode"); // Changed to <html>
+        }
+        // Only collapse .info-content on mobile initially
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+          document.querySelectorAll(".info-content").forEach((el) => {
+            el.classList.add("collapsed");
+          });
+        }
+      })();
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- Information Area -->
+      <div class="info-container">
+        <button class="toggle-btn">Toggle Information</button>
+        <div class="info-content">
+          <h2>Information</h2>
+          <p>
+            Fill out the form accordingly to generate a bid. The following
+            prices are provided as a ranged parameter taken from RepairBase
+            2024.
+          </p>
+          <p><b>Approximate Prices:</b></p>
+          <table>
+            <tr>
+              <th>Item</th>
+              <th>Size</th>
+              <th>Price</th>
+            </tr>
+            <tr>
+              <td>Remove - Masonry Structure</td>
+              <td>100 SF</td>
+              <td>$1,335.33</td>
+            </tr>
+            <tr>
+              <td>Remove - Masonry Structure</td>
+              <td>200 SF</td>
+              <td>$2,755.62</td>
+            </tr>
+            <tr>
+              <td>Remove - Masonry Structure</td>
+              <td>400 SF</td>
+              <td>$4,983.89</td>
+            </tr>
+            <tr>
+              <td>Remove - Masonry Structure</td>
+              <td>600 SF</td>
+              <td>$7,321.16</td>
+            </tr>
+            <tr>
+              <td>Remove - Metal Structure</td>
+              <td>100 SF</td>
+              <td>$721.99</td>
+            </tr>
+            <tr>
+              <td>Remove - Metal Structure</td>
+              <td>200 SF</td>
+              <td>$1,552.64</td>
+            </tr>
+            <tr>
+              <td>Remove - Metal Structure</td>
+              <td>400 SF</td>
+              <td>$3,761.10</td>
+            </tr>
+            <tr>
+              <td>Remove - Metal Structure</td>
+              <td>600 SF</td>
+              <td>$5,766.38</td>
+            </tr>
+            <tr>
+              <td>Remove - Wood Structure</td>
+              <td>100 SF</td>
+              <td>$739.18</td>
+            </tr>
+            <tr>
+              <td>Remove - Wood Structure</td>
+              <td>200 SF</td>
+              <td>$1,416.97</td>
+            </tr>
+            <tr>
+              <td>Remove - Wood Structure</td>
+              <td>400 SF</td>
+              <td>$3,192.89</td>
+            </tr>
+            <tr>
+              <td>Remove - Wood Structure</td>
+              <td>600 SF</td>
+              <td>$5,054.53</td>
+            </tr>
+          </table>
+          <h3>Conjunction Bid:</h3>
+          <a href="./r_equipment.html">Rent Equipment</a><br /><br />
+          <a href="./fill_in_depression.html">Fill In Depression</a>
+          <b>
+            <p style="color: brown">
+              ***Consult with your Team Lead before submitting the price.***
+            </p>
+          </b>
+          <b>
+            <p style="color: brown">
+              ***Please copy the bids before visiting other pages. Bids will not
+              be saved once redirected.***
+            </p>
+          </b>
+        </div>
+      </div>
+
+      <div class="container">
+        <button class="toggle-btn">Toggle Form</button>
+        <div class="division">
+          <h1>Demolition Bid</h1>
+          <h2>Demolish Other Structure Bids</h2>
+          <form id="Form">
+            <label for="bidPrefix"
+              >Bid Prefix (for conjunction bid - Use a colon after
+              prefix)</label
+            >
+            <input
+              type="text"
+              id="bidPrefix"
+              name="bidPrefix"
+              placeholder="Title: / Title-"
+            />
+
+            <label for="type1">Structure Type:*</label>
+            <select id="type1" name="type1">
+              <option value="">--Select any--</option>
+              <option value="Brick">Brick</option>
+              <option value="Cinder Block">Cinder Block</option>
+              <option value="Concrete">Concrete</option>
+              <option value="Metal">Metal</option>
+              <option value="Stone">Stone</option>
+              <option value="Wood">Wood</option>
+            </select>
+
+            <label for="length">Structure Length:*</label>
+            <input type="number" id="length" name="length" step="1" />
+            <label for="width">Structure Width:*</label>
+            <input type="number" id="width" name="width" step="1" />
+
+            <label for="predebris"
+              >Structure has stored debris: (Keep it blank if there is no prior
+              stored debris)</label
+            >
+            <input type="number" id="predebris" name="predebris" step="1" />
+
+            <label for="debris">Generated debris (in cyds):*</label>
+            <input type="number" id="debris" name="debris" step="1" required />
+
+            <label for="perm">Permit Needed:*</label>
+            <select id="perm" name="perm" required>
+              <option value="">--Select any--</option>
+              <option value="Will require pulling a permit. ">Yes</option>
+              <option value="Permit not required. ">No</option>
+            </select>
+
+            <label for="additionalInfo">Additional information:</label>
+            <textarea
+              id="additionalInfo"
+              name="additionalInfo"
+              placeholder="Disclaimers or any other comment"
+            ></textarea>
+
+            <label for="conj">Make this bid conjunction to:</label>
+            <input
+              type="text"
+              id="conj"
+              name="conj"
+              placeholder="Bid name only"
+            />
+
+            <label for="price">Price (in USD):</label>
+            <input type="number" id="price" name="price" step="0.01" />
+
+            <button type="submit">Generate Bid</button>
+            <!-- <a href="https://www.zillow.com/" target="_blank" id="findpropsize"
+              >Find Property Size: Zillow</a
+            > -->
+            <a href="https://www.google.com/maps" target="_blank" id="measuredr"
+              >Measure Property Size</a
+            >
+          </form>
+        </div>
+      </div>
+
+      <!-- New Note Section -->
+      <div class="note-container">
+        <h2>Bids</h2>
+        <div id="notesList" class="notes-list">
+          <!-- Notes will be dynamically added here -->
+        </div>
+        <button id="copyAllBidsButton">Copy All Bids</button>
+        <a href="../index.html" id="home">
+          <ion-icon name="home"></ion-icon> Go Home</a
+        >
+      </div>
+    </div>
+
+    <div id="floatingMessage" class="floating-message">Copied!</div>
+
+    <!-- Script to Generate Bid -->
+    <script>
+      document
+        .getElementById("Form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          const bidPrefix = document.getElementById("bidPrefix").value;
+          const type1 = document.getElementById("type1").value;
+          const length = document.getElementById("length").value;
+          const width = document.getElementById("width").value;
+          const predebris = document.getElementById("predebris").value;
+          const debris = document.getElementById("debris").value;
+          const perm = document.getElementById("perm").value;
+          const additionalInfo =
+            document.getElementById("additionalInfo").value;
+          const conj = document.getElementById("conj").value;
+          const price = parseFloat(document.getElementById("price").value || 0);
+
+          // Format the price with commas
+          const formattedPrice = price.toLocaleString("en-US", {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+
+          // Generate the bid text
+          const bidText = `${bidPrefix} Need to demolish ${length} x ${width} = ${
+            length * width
+          }SF ${type1} structure at the property due to the severe damage. Will generate approx ${debris} cyds of debris - includes haul away. ${
+            predebris
+              ? `There is also approx ${predebris} cyds of debris that needs disposal befor demolishing the structure.`
+              : ""
+          }${perm} Will require renting equipments. ***The whole job will take 2-5 days to complete with clean-up.*** ${
+            conj ? `***Must be approved in conjunction to ${conj} bid.***` : ""
+          } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          // Save the bid as a note
+          saveBidAsNote(bidText);
+        });
+    </script>
+    <script src="script_other.js"></script>
+    <script src="..\dark_mode.js"></script>
+    <script src="blocker.js"></script>
+  </body>
+</html>

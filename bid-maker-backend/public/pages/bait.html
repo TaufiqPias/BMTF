@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Bait Blocks - BMT</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode"); // Changed to <html>
+        }
+        // Only collapse .info-content on mobile initially
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+          document.querySelectorAll(".info-content").forEach((el) => {
+            el.classList.add("collapsed");
+          });
+        }
+      })();
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- Information Area -->
+      <div class="info-container">
+        <button class="toggle-btn">Toggle Information</button>
+        <div class="info-content">
+          <h2>Information</h2>
+          <p>
+            Fill out the form accordingly to generate a bid. The following
+            prices are provided as a ranged parameter taken from RepairBase
+            2024.
+          </p>
+          <p><b>Approximate Prices:</b></p>
+
+          <p>
+            First Visit: <span>$25.00</span><br />
+            Mouse Trap 10pcs: <span>$30.98</span> <br />
+            Bait Blocks 1pack: <span>$14.98</span> <br />
+            Bait Block Station 20pcs: <span>$11.98</span><br />
+            Second Visit: <span>$25.00</span><br />
+          </p>
+
+          <img
+            src="..\Images\Mouse Trap.png"
+            alt="Mouse Trap"
+            style="width: 100%; border-radius: 10px"
+          />
+
+          <p><b>Instructions:</b></p>
+          <p>
+            1. Mouse traps comes with baits. So no need to add the bait price.
+            Price will be [1st Visit + Mouse Trap + 2nd Visit]. <br />
+            2. Bait blocks are sold in packs and each pack contains more than 20
+            pcs of bait block. It also requries a bait block station to hold the
+            bait blocks but it is not mandatory. Not using a station can be
+            messy as rats may hide anywhere after eating the bait and that can
+            cause a lot of hassel. So, the price will be [1st Visit + Bait Block
+            Station + Bait Block + 2nd Visit]. <br />
+            3. Not returning to collect the dead rats will cause rotting and it
+            will spread a lot of foul smell as well as further infestation. It
+            can come back as Back-Charge. <br />
+            4. Feces are the mark to identify if a property has mouse
+            infestation or not. Make sure to add a conjunction bid to remove the
+            feces after the traps are set. <br />
+          </p>
+
+          <h3>Conjunction Bid</h3>
+          <a href="./pages/feces.html">Remove Feces</a>
+
+          <b>
+            <p style="color: brown">
+              ***Consult with your Team Lead before submitting the price.***
+            </p>
+          </b>
+          <b>
+            <p style="color: brown">
+              ***Please copy the bids before visiting other pages. Bids will not
+              be saved once redirected.***
+            </p>
+          </b>
+        </div>
+      </div>
+
+      <div class="container">
+        <button class="toggle-btn">Toggle Form</button>
+        <div class="division">
+          <h1>Infestation Bid</h1>
+          <h2>Bait Blocks Bids</h2>
+          <form id="Form">
+            <label for="bidPrefix"
+              >Bid Prefix (for conjunction bid - Use a colon after
+              prefix)</label
+            >
+            <input
+              type="text"
+              id="bidPrefix"
+              name="bidPrefix"
+              placeholder="Title: / Title-"
+            />
+
+            <label for="appl">Select a method?*</label>
+            <select id="appl" name="appl" required>
+              <option value="">--Select any--</option>
+              <option value="bait blocks">Bait Blocks</option>
+              <option value="mouse traps">Mouse Traps</option>
+            </select>
+
+            <label for="rtrn">Will vendor return to collect the kill?*</label>
+            <select id="rtrn" name="rtrn" required>
+              <option value="">--Select any--</option>
+              <option value="yes">Yes</option>
+              <option value="">No</option>
+            </select>
+
+            <label for="additionalInfo">Additional information:</label>
+            <textarea
+              id="additionalInfo"
+              name="additionalInfo"
+              placeholder="Disclaimers or any other comment"
+            ></textarea>
+
+            <label for="conj">Make this bid conjunction to:</label>
+            <input
+              type="text"
+              id="conj"
+              name="conj"
+              placeholder="Bid name only"
+            />
+
+            <label for="price">Price (in USD):</label>
+            <input type="number" id="price" name="price" step="0.01" />
+
+            <button type="submit">Generate Bid</button>
+            <!-- <a href="https://www.zillow.com/" target="_blank" id="findpropsize">Find Property Size: Zillow</a> -->
+            <!-- <a href="https://www.google.com/maps" target="_blank" id="measuredr">Plan & Measure French Drain</a> -->
+          </form>
+        </div>
+      </div>
+
+      <!-- New Note Section -->
+      <div class="note-container">
+        <h2>Bids</h2>
+        <div id="notesList" class="notes-list">
+          <!-- Notes will be dynamically added here -->
+        </div>
+        <button id="copyAllBidsButton">Copy All Bids</button>
+        <a href="../index.html" id="home">
+          <ion-icon name="home"></ion-icon> Go Home</a
+        >
+      </div>
+    </div>
+
+    <div id="floatingMessage" class="floating-message">Copied!</div>
+
+    <!-- Script to Generate Bid -->
+    <script>
+      document
+        .getElementById("Form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          const bidPrefix = document.getElementById("bidPrefix").value;
+          const appl = document.getElementById("appl").value;
+          const rtrn = document.getElementById("rtrn").value;
+          const additionalInfo =
+            document.getElementById("additionalInfo").value;
+          const conj = document.getElementById("conj").value;
+          const price = parseFloat(document.getElementById("price").value || 0);
+
+          // Format the price with commas
+          const formattedPrice = price.toLocaleString("en-US", {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+
+          // Generate the bid text
+          const bidText = `${bidPrefix} Property is infested with rats and rodents. Need to set 10 ${appl} in different location to get rid of the infestation. ${
+            rtrn
+              ? `Our crew will return to the property 48-72 hours later to collect the decesed rats/rodents. An additional trip charge has been added to this bid as pre-approved to colleced the dead animals.`
+              : ""
+          } Once completed executing this bid, we will provide a bid to remove the animal feces from the property. ${
+            conj ? `***Must be approved in conjunction to ${conj} bid.***` : ""
+          } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          // Save the bid as a note
+          saveBidAsNote(bidText);
+        });
+    </script>
+    <script src="script_other.js"></script>
+    <script src="..\dark_mode.js"></script>
+    <script src="blocker.js"></script>
+  </body>
+</html>

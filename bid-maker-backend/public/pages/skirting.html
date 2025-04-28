@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Skirting - BMT</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode"); // Changed to <html>
+        }
+        // Only collapse .info-content on mobile initially
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+          document.querySelectorAll(".info-content").forEach((el) => {
+            el.classList.add("collapsed");
+          });
+        }
+      })();
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- Information Area -->
+      <div class="info-container">
+        <button class="toggle-btn">Toggle Information</button>
+        <div class="info-content">
+          <h2>Information</h2>
+          <p>
+            Fill out the form accordingly to generate a bid. The following
+            prices are provided as a ranged parameter taken from RepairBase
+            2024.
+          </p>
+          <p><b>Approximate Prices:</b></p>
+          <table>
+            <tr>
+              <th>Items</th>
+              <th>Prices</th>
+            </tr>
+            <tr>
+              <td>Remove Skirting - Does not Include Disposal - Per LF</td>
+              <td>$2.22</td>
+            </tr>
+            <tr>
+              <td>
+                Install New - Skirting - Lattice - Wood or Vinyl - Per LF - up
+                to 24"
+              </td>
+              <td>$16.05</td>
+            </tr>
+            <tr>
+              <td>
+                Install New - Skirting - Lattice - Wood or Vinyl - Per LF - up
+                to 48"
+              </td>
+              <td>$21.94</td>
+            </tr>
+            <tr>
+              <td>
+                Install New - Skirting - Vinyl Panels - Per LF - up to 24"
+              </td>
+              <td>$15.06</td>
+            </tr>
+            <tr>
+              <td>
+                Install New - Skirting - Vinyl Panels - Per LF - up to 36"
+              </td>
+              <td>$17.85</td>
+            </tr>
+            <tr>
+              <td>
+                Install New - Skirting - Vinyl Panels - Per LF - up to 48"
+              </td>
+              <td>$20.51</td>
+            </tr>
+            <tr>
+              <td>
+                Install New - Skirting - Aluminum Panels - Per LF - up to 24"
+              </td>
+              <td>$19.01</td>
+            </tr>
+            <tr>
+              <td>
+                Install New - Skirting - Aluminum Panels - Per LF - up to 36"
+              </td>
+              <td>$23.66</td>
+            </tr>
+            <tr>
+              <td>
+                Install New - Skirting - Aluminum Panels - Per LF - up to 48"
+              </td>
+              <td>$27.92</td>
+            </tr>
+          </table>
+          <b>
+            <p style="color: brown">
+              ***Consult with your Team Lead before submitting the price.***
+            </p>
+          </b>
+          <b>
+            <p style="color: brown">
+              ***Please copy the bids before visiting other pages. Bids will not
+              be saved once redirected.***
+            </p>
+          </b>
+        </div>
+      </div>
+
+      <div class="container">
+        <button class="toggle-btn">Toggle Form</button>
+        <div class="division">
+          <h1>Ceiling, Walls & Siding Bid</h1>
+          <h2>Skirting Bids</h2>
+          <form id="Form">
+            <label for="bidPrefix"
+              >Bid Prefix (for conjunction bid - Use a colon after
+              prefix)</label
+            >
+            <input
+              type="text"
+              id="bidPrefix"
+              name="bidPrefix"
+              placeholder="Title: / Title-"
+            />
+
+            <label for="action">Select an Action:*</label>
+            <select id="action" name="action" required>
+              <option value="">--Select an Action--</option>
+              <option value="remove">Remove</option>
+              <option value="replace">Replace</option>
+              <option value="repair">Repair</option>
+            </select>
+
+            <label for="appl">Select a Skirting Material:*</label>
+            <select id="appl" name="appl" required>
+              <option value="">--Select any--</option>
+              <option value="wood">Wood</option>
+              <option value="vinyl">Vinyl</option>
+              <option value="metal">Metal</option>
+              <option value="picket">Picket</option>
+            </select>
+
+            <label for="count">How many LF of Skirting:*</label>
+            <input type="number" id="count" name="count" step="1" required />
+
+            <label for="tbrail">Top and Bottom Rail Included?*</label>
+            <select id="tbrail" name="tbrail" required>
+              <option value="">--Select any--</option>
+              <option value="yes">Yes</option>
+              <option value="">No</option>
+            </select>
+
+            <div id="debrisField" style="display: none">
+              <label for="debris">Generated debris (in cyds):</label>
+              <input type="number" id="debris" name="debris" step="1" />
+            </div>
+
+            <label for="loc">Location:*</label>
+            <input
+              type="text"
+              id="loc"
+              name="loc"
+              placeholder="front, back, right, left, etc."
+              required
+            />
+
+            <label for="additionalInfo">Additional information:</label>
+            <textarea
+              id="additionalInfo"
+              name="additionalInfo"
+              placeholder="Disclaimers or any other comment"
+            ></textarea>
+
+            <label for="conj">Make this bid conjunction to:</label>
+            <input
+              type="text"
+              id="conj"
+              name="conj"
+              placeholder="Bid name only"
+            />
+
+            <label for="price">Price (in USD):</label>
+            <input type="number" id="price" name="price" step="0.01" />
+
+            <button type="submit">Generate Bid</button>
+            <!-- <a href="https://www.zillow.com/" target="_blank" id="findpropsize">Find Property Size: Zillow</a> -->
+            <!-- <a href="https://www.google.com/maps" target="_blank" id="measuredr">Plan & Measure French Drain</a> -->
+          </form>
+        </div>
+      </div>
+
+      <!-- New Note Section -->
+      <div class="note-container">
+        <h2>Bids</h2>
+        <div id="notesList" class="notes-list">
+          <!-- Notes will be dynamically added here -->
+        </div>
+        <button id="copyAllBidsButton">Copy All Bids</button>
+        <a href="../index.html" id="home">
+          <ion-icon name="home"></ion-icon> Go Home</a
+        >
+      </div>
+    </div>
+
+    <div id="floatingMessage" class="floating-message">Copied!</div>
+
+    <!-- Script to Generate Bid -->
+    <script>
+      document.getElementById("action").addEventListener("change", function () {
+        const action = this.value;
+        const debrisField = document.getElementById("debrisField");
+
+        // Debris field visibility
+        if (action === "remove") {
+          debrisField.style.display = "block";
+        } else {
+          debrisField.style.display = "none";
+        }
+      });
+
+      document
+        .getElementById("Form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          const bidPrefix = document.getElementById("bidPrefix").value;
+          const action = document.getElementById("action").value;
+          const appl = document.getElementById("appl").value;
+          const count = document.getElementById("count").value;
+          const tbrail = document.getElementById("tbrail").value;
+          const loc = document.getElementById("loc").value;
+          const debris = document.getElementById("debris").value;
+          const additionalInfo =
+            document.getElementById("additionalInfo").value;
+          const conj = document.getElementById("conj").value;
+          const price = parseFloat(document.getElementById("price").value || 0);
+
+          // Format the price with commas
+          const formattedPrice = price.toLocaleString("en-US", {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+
+          // Generate the bid text
+          let bidText;
+          if (action === "remove") {
+            bidText = `${bidPrefix} Need to ${action} approx. ${count} LF of ${appl} skirting ${
+              tbrail
+                ? `-including ${count} LF of toprail & ${count} LF of bottomrail`
+                : ""
+            } from the ${loc} side of the property. Will generate approx ${debris} cyds of debris - hauling away included. ${
+              conj
+                ? `***Must be approved in conjunction to ${conj} bid.***`
+                : ""
+            } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          } else if (action === "replace" || action === "repair") {
+            bidText = `${bidPrefix} Need to ${action} approx. ${count} LF of ${appl} skirting ${
+              tbrail
+                ? `-including ${count} LF of toprail & ${count} LF of bottomrail`
+                : ""
+            } at the ${loc} side of the property. ${
+              conj
+                ? `***Must be approved in conjunction to ${conj} bid.***`
+                : ""
+            } ${additionalInfo}\nPrice: $${formattedPrice}`;
+          } else {
+            alert("Please select an action (Remove or Replace).");
+            return; // Stop execution if no action is selected
+          }
+          // Save the bid as a note
+          saveBidAsNote(bidText);
+        });
+    </script>
+    <script src="script_other.js"></script>
+    <script src="..\dark_mode.js"></script>
+    <script src="blocker.js"></script>
+  </body>
+</html>

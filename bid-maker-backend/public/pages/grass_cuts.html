@@ -76,23 +76,143 @@
             the form accordingly to generate a bid. The following prices are
             provided as a ranged parameter taken from RepairBase 2024.
           </p>
+          <style>
+            #gcpForm {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            label {
+              display: block;
+            }
+            #gcpForm input, select {
+              padding: 5px;
+              width: 100%;
+              
+            }
+           .result {
+                margin-bottom: 20px;
+                margin-top: 5px;
+                font-size: 1.5em;
+                /* border: 1px solid #ccc; */
+                border-radius: 5px;
+                background-color: #218838;
+                color: aliceblue;
+            }
+          </style>
+        </head>
+        <body>
+          <h3 style="text-align: center;">Grass Cut Calculator</h3>
+          <form id="gcpForm">
+            <label for="gheight">Grass Height:</label>
+            <select id="gheight" required>
+                <option value="">Select</option>
+                <option value='upto 12"'>upto 12"</option>
+                <option value='12" - 24"'>12" - 24"</option>
+                <option value='24" - 36"'>24" - 36"</option>
+                <option value='36" - 48"'>36" - 48"</option>
+                <option value='48" - 72"'>48" - 72"</option>
+                <option value='over 72"'>over 72"</option>
+            </select>
+        
+            <label for="lotsize">Lot Size (SF):</label>
+            <input type="number" id="lotsize" step="0.1" required>
+        
+                   
+            <button type="submit">Calculate</button>
+          </form>
+        
+          <div class="result" id="result" style="text-align: center;"></div>
+        
+          <script>
+            document.getElementById('gcpForm').addEventListener('submit', function(event) {
+              event.preventDefault(); // Prevent form submission
+        
+              // Get form values
+              const gheight = document.getElementById('gheight').value;
+              const lotsize = parseFloat(document.getElementById('lotsize').value);
+        
+              // Perform calculation based on pool type
+              let result;
+              if (gheight === 'upto 12"') {
+                result = ((lotsize * 9.25) / 1000).toFixed(2);
+              } else if (gheight === '12" - 24"') {
+                result = ((lotsize * 15.70) / 1000).toFixed(2);
+              } else if (gheight === '24" - 36"') {
+                result = ((lotsize * 23.15) / 1000).toFixed(2);
+              } else if (gheight === '36" - 48"') {
+                result = ((lotsize * 31) / 1000).toFixed(2);
+              } else if (gheight === '48" - 72"') {
+                result = ((lotsize * 38.20) / 1000).toFixed(2);
+              } else if (gheight === 'over 72"') {
+                result = ((lotsize * 47) / 1000).toFixed(2);
+              } 
+        
+              // Display the result
+              document.getElementById('result').innerHTML = `GC Price: <strong>$${result}</strong>`;
+            });
+          </script>
+
           <p><strong>Prices: Approximate Range</strong></p>
           <p>
-            <b
-              >Only for Initial Grass cut<br />
-              Cut Lawn - 12" Tall - up to 5,000SF = $76.28 <br />
-              Cut Lawn - 12" Tall - for EA 1,000SF = $8.49 <br />
-              Cut Lawn - 12" - 24" Tall - up to 5,000SF = $107.46 <br />
-              Cut Lawn - 12" - 24" Tall - EA 1,000SF = $14.84 <br />
-              Cut Lawn - 24" - 36" Tall - up to 5,000SF = $147.56 <br />
-              Cut Lawn - 24" - 36" Tall - EA 1,000SF = $22.05 <br />
-              Cut Lawn - 36" - 48" Tall - up to 5,000SF = $197.61 <br />
-              Cut Lawn - 36" - 48" Tall - EA 1,000SF = $29.25 <br />
-              Cut Lawn - 48" - 72" Tall - up to 5,000SF = $243.21 <br />
-              Cut Lawn - 48" - 72" Tall - EA 1,000SF = $35.88</b
-            >
+            <table>
+              <tr>
+                <th>Grass Height</th>
+                <th>Lot Size</th>
+                <th>Prices</th>
+              </tr>
+              <tr>
+                <td>upto 12" Tall</td>
+                <td>up to 5,000SF</td>
+                <td>$76.28</td>
+              </tr>
+              <tr>
+                <td>upto 12" Tall</td>
+                <td>for EA 1,000SF</td>
+                <td>$8.49</td>
+              </tr>
+              <tr>
+                <td>12" - 24" Tall</td>
+                <td>up to 5,000SF</td>
+                <td>$107.46</td>
+              </tr>
+              <tr>
+                <td>12" - 24" Tall</td>
+                <td>for EA 1,000SF</td>
+                <td>$14.84</td>
+              </tr>
+              <tr>
+                <td>24" - 36" Tall</td>
+                <td>up to 5,000SF</td>
+                <td>$147.56</td>
+              </tr>
+              <tr>
+                <td>24" - 36" Tall</td>
+                <td>for EA 1,000SF</td>
+                <td>$22.05</td>
+              </tr>
+              <tr>
+                <td>36" - 48" Tall</td>
+                <td>up to 5,000SF</td>
+                <td>$197.61</td>
+              </tr>
+              <tr>
+                <td>36" - 48" Tall</td>
+                <td>for EA 1,000SF</td>
+                <td>$29.25</td>
+              </tr>
+              <tr>
+                <td>48" - 72" Tall</td>
+                <td>up to 5,000SF</td>
+                <td>$243.21</td>
+              </tr>
+              <tr>
+                <td>48" - 72" Tall</td>
+                <td>for EA 1,000SF</td>
+                <td>$35.88</td>
+              </tr>
+            </table>
           </p>
-          <br />
+          
           <p>
             <b
               >Please check the client grass cut pricing metrix for grass
@@ -102,7 +222,7 @@
 
           <b>Brush hog rental price per day: $163.02 </b>
           <br />
-          <br />
+          
           <b>
             <p style="color: brown">
               ***Consult with your Team Lead before submitting the price.***

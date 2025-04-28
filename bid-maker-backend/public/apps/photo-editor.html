@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>BMT - Photo Editor</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png" />
+    <link rel="stylesheet" href="..\apps\photo_editor.css" />
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+  <body>
+    <h1>BMT Photo Editor</h1>
+    <div class="container">
+      <div class="left-panel">
+        <div class="section">
+          <h2>Upload Images</h2>
+          <p style="font-size: 10px; color: darkgrey">
+            You can choose as many photos as you like.
+          </p>
+          <input type="file" id="imageInput" accept="image/*" multiple />
+          <div class="preview-container" id="previewContainer"></div>
+        </div>
+
+        <div class="section">
+          <h2>Resize Images</h2>
+          <label for="resolution">Select Resolution:</label>
+          <select id="resolution">
+            <option value="">Select a resolution</option>
+            <option value="640x480">640 x 480</option>
+            <option value="800x600">800 x 600</option>
+            <option value="1024x768">1024 x 768</option>
+            <option value="1280x960">1280 x 960</option>
+            <option value="1400x1050">1400 x 1050</option>
+            <option value="1600x1200">1600 x 1200</option>
+            <option value="1920x1440">1920 x 1440</option>
+          </select>
+          <button onclick="batchResizeImages()">Resize All</button>
+        </div>
+
+        <div class="section">
+          <h2>Edit EXIF Data</h2>
+          <div class="input-columns">
+            <div class="column">
+              <label for="dateTaken">Date Taken:</label>
+              <input type="date" id="dateTaken" />
+              <label for="gpsLatitude">GPS Latitude:</label>
+              <input
+                type="text"
+                id="gpsLatitude"
+                step="any"
+                placeholder="Enter latitude"
+              />
+            </div>
+            <div class="column">
+              <label for="timeTaken">Time Taken:</label>
+              <input type="time" id="timeTaken" />
+              <label for="gpsLongitude">GPS Longitude:</label>
+              <input
+                type="text"
+                id="gpsLongitude"
+                step="any"
+                placeholder="Enter longitude"
+              />
+            </div>
+          </div>
+          <button onclick="batchUpdateExif()">Update EXIF for All</button>
+          <a href="https://www.google.com/maps" target="_blank" id="measuredr"
+            >Find GPS Coordinates</a
+          >
+          <h3>EXIF Data Preview (First Image)</h3>
+          <div id="exifData">No EXIF data loaded</div>
+        </div>
+
+        <div class="section">
+          <h2>Datestamp</h2>
+          <div class="input-columns">
+            <div class="column">
+              <label for="datestamp">Datestamp:</label>
+              <input type="date" id="datestamp" />
+            </div>
+            <div class="column">
+              <label for="color">Text Color:</label>
+              <input type="color" id="color" value="#FFC300" />
+            </div>
+          </div>
+          <button onclick="batchAddDatestamp()">Add Datestamp to All</button>
+        </div>
+
+        <div class="section">
+          <button onclick="downloadImages()">Download All Edited Images</button>
+          <div id="progress"></div>
+          <a href="../index.html" id="home">Go Home</a>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <div class="section">
+          <h2>Selected Images</h2>
+          <ul id="selectedImagesList" class="selected-images-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/piexifjs@1.0.6/piexif.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pica@9.0.1/dist/pica.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script>
+      let originalImages = [];
+      let editedImages = [];
+      let files = [];
+      let currentExifBytes = null;
+
+      // Convert YYYY-MM-DD to MM/DD/YYYY
+      function formatDateToMMDDYYYY(dateStr) {
+        if (!dateStr) return "";
+        const [year, month, day] = dateStr.split("-");
+        return `${month}/${day}/${year}`;
+      }
+
+      // Validate MM/DD/YYYY format
+      function isValidMMDDYYYY(dateStr) {
+        const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
+        return dateRegex.test(dateStr);
+      }
+
+      // Combine date and time into EXIF DateTime format (YYYY:MM:DD HH:MM:SS)
+      function toExifDateTime(dateStr, timeStr) {
+        if (!dateStr) return "";
+        const [year, month, day] = dateStr.split("-");
+        let time = timeStr || "00:00";
+        const [hours, minutes] = time.split(":");
+        return `${year}:${month}:${day} ${hours}:${minutes}:00`;
+      }
+
+      // Convert decimal degrees to EXIF GPS format (degrees, minutes, seconds)
+      function toExifGPS(decimal) {
+        if (isNaN(decimal)) return null;
+        const abs = Math.abs(decimal);
+        const degrees = Math.floor(abs);
+        const minutes = Math.floor((abs - degrees) * 60);
+        const seconds = (abs - degrees - minutes / 60) * 3600 * 1000;
+        return [
+          [degrees, 1],
+          [minutes, 1],
+          [seconds, 1000],
+        ];
+      }
+
+      // Convert EXIF GPS format to decimal degrees
+      function exifGPSToDecimal(gpsArray, ref) {
+        if (!gpsArray || gpsArray.length !== 3) return null;
+        const [degrees, minutes, seconds] = gpsArray.map(
+          ([num, denom]) => num / denom
+        );
+        let decimal = degrees + minutes / 60 + seconds / 3600;
+        if (ref === "S" || ref === "W") decimal = -decimal;
+        return decimal;
+      }
+
+      // Set default time to current device time
+      document.addEventListener("DOMContentLoaded", function () {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        document.getElementById("timeTaken").value = `${hours}:${minutes}`;
+      });
+
+      document
+        .getElementById("imageInput")
+        .addEventListener("change", async function (e) {
+          files = Array.from(e.target.files);
+          originalImages = [];
+          editedImages = [];
+          currentExifBytes = null;
+          const previewContainer = document.getElementById("previewContainer");
+          const selectedImagesList =
+            document.getElementById("selectedImagesList");
+          previewContainer.innerHTML = "";
+          selectedImagesList.innerHTML = "";
+
+          for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const img = await loadImage(file);
+            originalImages.push(img);
+            editedImages.push(img);
+
+            // Display only the first image in the preview
+            if (i === 0) {
+              const imgElement = document.createElement("img");
+              imgElement.src = img.src;
+              previewContainer.appendChild(imgElement);
+            }
+
+            // Truncate file name if longer than 10 characters
+            let displayName = file.name;
+            if (displayName.length > 10) {
+              displayName = displayName.substring(0, 10) + "..";
+            }
+
+            // Add to selected images list
+            const li = document.createElement("li");
+            const fileSizeKB = (file.size / 1024).toFixed(2);
+            li.innerHTML = `<span>${
+              i + 1
+            }. ${displayName}</span><span>${fileSizeKB} KB</span>`;
+            selectedImagesList.appendChild(li);
+          }
+
+          if (files.length > 0) {
+            loadExif(files[0]);
+          }
+        });
+
+      async function loadImage(file) {
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function loadExif(fileOrDataURL) {
+        const reader = new FileReader();
+        const displayExif = (exifObj) => {
+          const dateTime =
+            exifObj["0th"][piexif.ImageIFD.DateTime] ||
+            exifObj.Exif[piexif.ExifIFD.DateTimeOriginal] ||
+            "Not set";
+          const gpsLatitude = exifObj.GPS[piexif.GPSIFD.GPSLatitude]
+            ? exifGPSToDecimal(
+                exifObj.GPS[piexif.GPSIFD.GPSLatitude],
+                exifObj.GPS[piexif.GPSIFD.GPSLatitudeRef]
+              )
+            : "Not set";
+          const gpsLongitude = exifObj.GPS[piexif.GPSIFD.GPSLongitude]
+            ? exifGPSToDecimal(
+                exifObj.GPS[piexif.GPSIFD.GPSLongitude],
+                exifObj.GPS[piexif.GPSIFD.GPSLongitudeRef]
+              )
+            : "Not set";
+          let dateTaken = "Not set";
+          let timeTaken = "Not set";
+          if (dateTime !== "Not set") {
+            const [date, time] = dateTime.split(" ");
+            dateTaken = date.replace(/:/g, "/");
+            timeTaken = time.split(":").slice(0, 2).join(":");
+          }
+          const displayData = {
+            DateTaken: dateTaken,
+            TimeTaken: timeTaken,
+            GPSLatitude: gpsLatitude !== "Not set" ? gpsLatitude : "Not set",
+            GPSLongitude: gpsLongitude !== "Not set" ? gpsLongitude : "Not set",
+          };
+          document.getElementById("exifData").textContent = JSON.stringify(
+            displayData,
+            null,
+            2
+          );
+        };
+
+        if (typeof fileOrDataURL === "string") {
+          fetch(fileOrDataURL)
+            .then((res) => res.blob())
+            .then((blob) => {
+              reader.onload = function (e) {
+                try {
+                  const exifObj = piexif.load(e.target.result);
+                  displayExif(exifObj);
+                } catch (err) {
+                  document.getElementById("exifData").textContent =
+                    "Error reading EXIF data";
+                }
+              };
+              reader.readAsDataURL(blob);
+            })
+            .catch((err) => {
+              document.getElementById("exifData").textContent =
+                "Error reading EXIF data";
+            });
+        } else {
+          reader.onload = function (e) {
+            try {
+              const exifObj = piexif.load(e.target.result);
+              displayExif(exifObj);
+            } catch (err) {
+              document.getElementById("exifData").textContent =
+                "Error reading EXIF data";
+            }
+          };
+          reader.readAsDataURL(fileOrDataURL);
+        }
+      }
+
+      // Helper function to apply EXIF data to an image
+      async function applyExifToImage(img) {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        let jpegData = canvas.toDataURL("image/jpeg", 0.95);
+
+        if (currentExifBytes) {
+          try {
+            jpegData = piexif.remove(jpegData);
+            jpegData = piexif.insert(currentExifBytes, jpegData);
+          } catch (err) {
+            console.error("Error applying EXIF data:", err);
+          }
+        }
+
+        const newImage = new Image();
+        newImage.src = jpegData;
+        await new Promise((resolve) => (newImage.onload = resolve));
+        return newImage;
+      }
+
+      async function batchResizeImages() {
+        if (originalImages.length === 0) {
+          alert("Please upload at least one image.");
+          return;
+        }
+
+        const resolution = document.getElementById("resolution").value;
+        if (!resolution) {
+          alert("Please select a resolution.");
+          return;
+        }
+
+        const [width, height] = resolution.split("x").map(Number);
+        const progress = document.getElementById("progress");
+        progress.style.display = "block";
+        progress.textContent = "Resizing images...";
+
+        editedImages = [];
+        const previewContainer = document.getElementById("previewContainer");
+        previewContainer.innerHTML = "";
+
+        for (let i = 0; i < originalImages.length; i++) {
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+
+          await pica().resize(originalImages[i], canvas, {
+            quality: 3,
+            alpha: true,
+          });
+
+          let newImage = new Image();
+          newImage.src = canvas.toDataURL("image/jpeg", 0.95);
+          await new Promise((resolve) => (newImage.onload = resolve));
+
+          // Apply EXIF data if it exists
+          newImage = await applyExifToImage(newImage);
+          editedImages.push(newImage);
+
+          // Display only the first image in the preview
+          if (i === 0) {
+            const imgElement = document.createElement("img");
+            imgElement.src = newImage.src;
+            previewContainer.appendChild(imgElement);
+          }
+        }
+
+        progress.style.display = "none";
+        alert("All images resized successfully.");
+      }
+
+      async function batchUpdateExif() {
+        if (editedImages.length === 0) {
+          alert("Please upload at least one image.");
+          return;
+        }
+
+        const dateTakenInput = document.getElementById("dateTaken").value;
+        const timeTakenInput = document.getElementById("timeTaken").value;
+        const formattedDateTaken = formatDateToMMDDYYYY(dateTakenInput);
+        const gpsLatitude = parseFloat(
+          document.getElementById("gpsLatitude").value
+        );
+        const gpsLongitude = parseFloat(
+          document.getElementById("gpsLongitude").value
+        );
+
+        // Validate formatted date
+        if (formattedDateTaken && !isValidMMDDYYYY(formattedDateTaken)) {
+          alert("Please enter a valid date in MM/DD/YYYY format.");
+          return;
+        }
+
+        const progress = document.getElementById("progress");
+        progress.style.display = "block";
+        progress.textContent = "Updating EXIF data...";
+
+        // Prepare EXIF data
+        const exifData = {
+          "0th": {},
+          Exif: {},
+          GPS: {},
+        };
+
+        if (formattedDateTaken) {
+          const exifDateTime = toExifDateTime(dateTakenInput, timeTakenInput);
+          exifData.Exif[piexif.ExifIFD.DateTimeOriginal] = exifDateTime;
+          exifData.Exif[piexif.ExifIFD.DateTimeDigitized] = exifDateTime;
+          exifData["0th"][piexif.ImageIFD.DateTime] = exifDateTime;
+        }
+
+        if (!isNaN(gpsLatitude)) {
+          exifData.GPS[piexif.GPSIFD.GPSLatitude] = toExifGPS(gpsLatitude);
+          exifData.GPS[piexif.GPSIFD.GPSLatitudeRef] =
+            gpsLatitude >= 0 ? "N" : "S";
+        }
+
+        if (!isNaN(gpsLongitude)) {
+          exifData.GPS[piexif.GPSIFD.GPSLongitude] = toExifGPS(gpsLongitude);
+          exifData.GPS[piexif.GPSIFD.GPSLongitudeRef] =
+            gpsLongitude >= 0 ? "E" : "W";
+        }
+
+        try {
+          currentExifBytes = piexif.dump(exifData);
+        } catch (err) {
+          console.error("Error dumping EXIF data:", err);
+          alert("Failed to prepare EXIF data.");
+          progress.style.display = "none";
+          return;
+        }
+
+        // Display updated EXIF data
+        const displayData = {
+          DateTaken: formattedDateTaken || "Unknown",
+          TimeTaken: timeTakenInput || "Not set",
+          GPSLatitude: isNaN(gpsLatitude) ? "Not set" : gpsLatitude,
+          GPSLongitude: isNaN(gpsLongitude) ? "Not set" : gpsLongitude,
+        };
+        document.getElementById("exifData").textContent = JSON.stringify(
+          displayData,
+          null,
+          2
+        );
+
+        const newEditedImages = [];
+        for (const img of editedImages) {
+          let newImage = await applyExifToImage(img);
+          newEditedImages.push(newImage);
+        }
+
+        editedImages = newEditedImages;
+        updatePreviews();
+
+        // Load EXIF data from the first updated image to verify
+        if (editedImages.length > 0) {
+          loadExif(editedImages[0].src);
+        }
+
+        progress.style.display = "none";
+        alert("EXIF data updated for all images.");
+      }
+
+      async function batchAddDatestamp() {
+        if (editedImages.length === 0) {
+          alert("Please upload at least one image.");
+          return;
+        }
+
+        const datestampInput = document.getElementById("datestamp").value;
+        const formattedDatestamp = formatDateToMMDDYYYY(datestampInput);
+        const color = document.getElementById("color").value;
+
+        // Validate formatted datestamp
+        if (!formattedDatestamp || !isValidMMDDYYYY(formattedDatestamp)) {
+          alert("Please enter a valid datestamp in MM/DD/YYYY format.");
+          return;
+        }
+
+        const progress = document.getElementById("progress");
+        progress.style.display = "block";
+        progress.textContent = "Adding datestamps...";
+
+        const newEditedImages = [];
+        const previewContainer = document.getElementById("previewContainer");
+        previewContainer.innerHTML = "";
+
+        for (let i = 0; i < editedImages.length; i++) {
+          const img = editedImages[i];
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+
+          // Calculate font size: Math.ceil((imageWidth / 100) * 2.5)
+          const fontSize = Math.ceil((img.width / 100) * 2.5);
+
+          ctx.font = `${fontSize}px Arial`;
+          ctx.fillStyle = color;
+          ctx.textAlign = "right";
+          ctx.textBaseline = "bottom";
+
+          // Calculate text metrics to ensure exact 20px offset
+          const textMetrics = ctx.measureText(formattedDatestamp);
+          const textHeight =
+            textMetrics.actualBoundingBoxAscent +
+            textMetrics.actualBoundingBoxDescent;
+          ctx.fillText(
+            formattedDatestamp,
+            canvas.width - 20,
+            canvas.height - 20
+          );
+
+          let newImage = new Image();
+          newImage.src = canvas.toDataURL("image/jpeg", 0.95);
+          await new Promise((resolve) => (newImage.onload = resolve));
+
+          // Re-apply EXIF data
+          newImage = await applyExifToImage(newImage);
+          newEditedImages.push(newImage);
+
+          // Display only the first image in the preview
+          if (i === 0) {
+            const imgElement = document.createElement("img");
+            imgElement.src = newImage.src;
+            previewContainer.appendChild(imgElement);
+          }
+        }
+
+        editedImages = newEditedImages;
+        progress.style.display = "none";
+        alert("Datestamps added to all images.");
+      }
+
+      function updatePreviews() {
+        const previewContainer = document.getElementById("previewContainer");
+        previewContainer.innerHTML = "";
+        if (editedImages.length > 0) {
+          const imgElement = document.createElement("img");
+          imgElement.src = editedImages[0].src;
+          previewContainer.appendChild(imgElement);
+        }
+      }
+
+      async function downloadImages() {
+        if (editedImages.length === 0) {
+          alert("Please upload and edit at least one image.");
+          return;
+        }
+
+        const progress = document.getElementById("progress");
+        progress.style.display = "block";
+        progress.textContent = "Preparing download...";
+
+        const zip = new JSZip();
+        for (let i = 0; i < editedImages.length; i++) {
+          const base64 = editedImages[i].src.split(",")[1];
+          // Use original file name
+          const originalFileName = files[i].name;
+          zip.file(originalFileName, base64, { base64: true });
+        }
+
+        const content = await zip.generateAsync({ type: "blob" });
+        saveAs(content, "BMT_Images_(edited).zip");
+
+        progress.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

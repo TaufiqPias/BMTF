@@ -87,7 +87,7 @@
           for that, we need 2 conjunct bid. <b>Bid 1</b> and <b>Bid 2</b> <br>
           Bid 1 - is for Anti-microbial wash and <br>
           Bid 2 - is for either kilz or drylok (depending on the material)</p>
-          <br>
+     
           <p>For Step 1: Go to HOME and find out the source damage and bid accordingly.</p>
           <p>For Step 3: visit the following link to add a "Moisture Control" bid.</p>
 
@@ -154,10 +154,10 @@
               </option>
             </select>
 
-            <label for="count"
-              >How many SF of Surface Needs Discoloration Treatment?*</label
-            >
-            <input type="number" id="count" name="count" step="1" required />
+            <label for="length">Discoloration Length:*</label>
+              <input type="number" id="length" name="length" step="1" required/>
+            <label for="width">Discoloration Width:*</label>
+              <input type="number" id="width" name="width" step="1" required/>
 
             <label for="coat">How many Applications?*</label>
             <select id="coat" name="coat" required>
@@ -278,7 +278,8 @@
         // Get form values
         const bidPrefix = document.getElementById("bidPrefix").value;
         const action = document.getElementById("action").value;
-        const count = document.getElementById("count").value;
+        const length = document.getElementById("length").value;
+        const width = document.getElementById("width").value;
         const coat = document.getElementById("coat").value;
         const loc = document.getElementById("loc").value;
         const appl = document.getElementById("appl").value;
@@ -297,15 +298,15 @@
         // Generate the bid text
         let bidText;
         if (action === "Bid 1: Bio-Wash") {
-          bidText = `${bidPrefix} Need to perform ${coat} coat(s) of anti-microbial solution wash (biowash) on ${count}sf of ${loc} to eliminate further mold growth. Material: ${appl}. Source/Reason: ${reason}. ***SOURCE MUST BE ADDRESSED PRIOR TO PROCEEDING WITH THIS BID***. After completing bio-wash, a sealer application is recommended using Kilz/Drylok/similar product. ${
+          bidText = `${bidPrefix} Need to perform ${coat} coat(s) of anti-microbial solution wash (biowash) on ${length} x ${width} = ${length * width}sf of ${loc} to eliminate further mold growth. Material: ${appl}. Source/Reason: ${reason}. ***SOURCE MUST BE ADDRESSED PRIOR TO PROCEEDING WITH THIS BID***. After completing bio-wash, a sealer application is recommended using Kilz/Drylok/similar product. ${
             conj ? `***Must be approved in conjunction to ${conj} bid.***` : ""
           } ${additionalInfo}\nPrice: $${formattedPrice}`;
         } else if (action === "Bid 2: Kilz") {
-          bidText = `${bidPrefix} After completing bio-wash, need to apply ${coat} coat(s) of kilz or similar prime sealer product on ${count}sf of ${loc} to prevent further water damage or leakage. Material: ${appl}. Source/Reason: ${reason}. ***SOURCE MUST BE ADDRESSED PRIOR TO PROCEEDING WITH THIS BID***. ***To control existing moisture, a damprid/dehumidifier bid must be approved in conjunction.*** ${
+          bidText = `${bidPrefix} After completing bio-wash, need to apply ${coat} coat(s) of kilz or similar prime sealer product on ${length} x ${width} = ${length * width}sf of ${loc} to prevent further water damage or leakage. Material: ${appl}. Source/Reason: ${reason}. ***SOURCE MUST BE ADDRESSED PRIOR TO PROCEEDING WITH THIS BID***. ***To control existing moisture, a damprid/dehumidifier bid must be approved in conjunction.*** ${
             conj ? `***Must be approved in conjunction to ${conj} bid.***` : ""
           } ${additionalInfo}\nPrice: $${formattedPrice}`;
         } else if (action === "Bid 2: Drylok") {
-          bidText = `${bidPrefix} After completing bio-wash, need to apply ${coat} coat(s) of drylok or similar prime sealer product on ${count}sf of ${loc} to prevent further water damage or leakage. Material: ${appl}. Source/Reason: ${reason}. ***SOURCE MUST BE ADDRESSED PRIOR TO PROCEEDING WITH THIS BID***. ***To control existing moisture, a damprid/dehumidifier bid must be approved in conjunction.*** ${
+          bidText = `${bidPrefix} After completing bio-wash, need to apply ${coat} coat(s) of drylok or similar prime sealer product on ${length} x ${width} = ${length * width}sf of ${loc} to prevent further water damage or leakage. Material: ${appl}. Source/Reason: ${reason}. ***SOURCE MUST BE ADDRESSED PRIOR TO PROCEEDING WITH THIS BID***. ***To control existing moisture, a damprid/dehumidifier bid must be approved in conjunction.*** ${
             conj ? `***Must be approved in conjunction to ${conj} bid.***` : ""
           } ${additionalInfo}\nPrice: $${formattedPrice}`;
         } else {

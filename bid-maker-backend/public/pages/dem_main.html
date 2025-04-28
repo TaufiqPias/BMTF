@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Demolish Main Structure - BMT</title>
+    <link rel="icon" type="image/x-icon" href="..\Images\Favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode"); // Changed to <html>
+        }
+        // Only collapse .info-content on mobile initially
+        if (window.matchMedia("(max-width: 1200px)").matches) {
+          document.querySelectorAll(".info-content").forEach((el) => {
+            el.classList.add("collapsed");
+          });
+        }
+      })();
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- Information Area -->
+      <div class="info-container">
+        <button class="toggle-btn">Toggle Information</button>
+        <div class="info-content">
+          <h2>Information</h2>
+          <p>
+            Fill out the form accordingly to generate a bid. The following
+            prices are provided as a ranged parameter taken from RepairBase
+            2024.
+          </p>
+          <p><b>Approximate Prices:</b></p>
+          <table>
+            <tr>
+              <th>Item</th>
+              <th>Price per SF</th>
+            </tr>
+            <tr>
+              <td>
+                Brick or Block Structure 1st Story - Including Equipment,
+                Foundation, Permits & Debris Removal
+              </td>
+              <td>$15.00</td>
+            </tr>
+            <tr>
+              <td>
+                Wood Structure 1st Story - Including Equipment, Foundation,
+                Permits & Debris Removal
+              </td>
+              <td>$10.21</td>
+            </tr>
+            <tr>
+              <td>
+                Wood Structure 1st Story - Not Including Foundation - Including
+                Equipment, Permits & Debris Removal
+              </td>
+              <td>$8.53</td>
+            </tr>
+            <tr>
+              <td>
+                Wood Structure - Each Additional Story - Including Equipment,
+                Permits & Debris Removal
+              </td>
+              <td>$4.03</td>
+            </tr>
+          </table>
+
+          <h3>Conjunction Bid:</h3>
+          <a href="./gen_ins.html">General Inspections</a><br /><br />
+
+          <a href="./r_equipment.html">Rent Equipment</a><br /><br />
+          <a href="./fill_in_depression.html">Fill In Depression</a>
+          <b>
+            <p style="color: brown">
+              ***Consult with your Team Lead before submitting the price.***
+            </p>
+          </b>
+          <b>
+            <p style="color: brown">
+              ***Please copy the bids before visiting other pages. Bids will not
+              be saved once redirected.***
+            </p>
+          </b>
+        </div>
+      </div>
+
+      <div class="container">
+        <button class="toggle-btn">Toggle Form</button>
+        <div class="division">
+          <h1>Demolition Bid</h1>
+          <h2>Demolish Main Structure Bids</h2>
+          <form id="Form">
+            <label for="bidPrefix"
+              >Bid Prefix (for conjunction bid - Use a colon after
+              prefix)</label
+            >
+            <input
+              type="text"
+              id="bidPrefix"
+              name="bidPrefix"
+              placeholder="Title: / Title-"
+            />
+
+            <label for="flr">How many floors (above ground level):*</label>
+            <select id="flr" name="flr" required>
+              <option value="">--Select any--</option>
+              <option value="1 floor">1 Floor</option>
+              <option value="2 floors">2 Floors</option>
+              <option value="3 floors">3 Floors</option>
+            </select>
+
+            <label for="appl">Basement Present?*</label>
+            <select id="appl" name="appl" required>
+              <option value="">--Select any--</option>
+              <option value="with basement">Yes</option>
+              <option value="without basement">No</option>
+            </select>
+
+            <div id="countField0" style="display: none">
+              <label for="size0">Basement size:*</label>
+              <input type="number" id="size0" name="size0" step="1" />
+
+              <label for="type0">Basement structure type:*</label>
+              <select id="type0" name="type0">
+                <option value="">--Select any--</option>
+                <option value="Brick">Brick</option>
+                <option value="Cinder Block">Cinder Block</option>
+                <option value="Concrete">Concrete</option>
+                <option value="Stone">Stone</option>
+              </select>
+            </div>
+
+            <div id="countField1" style="display: none">
+              <label for="size1">1st floor size:*</label>
+              <input type="number" id="size1" name="size1" step="1" />
+
+              <label for="type1">1st floor structure type:*</label>
+              <select id="type1" name="type1">
+                <option value="">--Select any--</option>
+                <option value="Brick">Brick</option>
+                <option value="Cinder Block">Cinder Block</option>
+                <option value="Concrete">Concrete</option>
+                <option value="Metal">Metal</option>
+                <option value="Stone">Stone</option>
+                <option value="Wood">Wood</option>
+              </select>
+            </div>
+
+            <div id="countField2" style="display: none">
+              <label for="size2">2nd floor size:*</label>
+              <input type="number" id="size2" name="size2" step="1" />
+
+              <label for="type2">2nd floor structure type:*</label>
+              <select id="type2" name="type2">
+                <option value="">--Select any--</option>
+                <option value="Brick">Brick</option>
+                <option value="Cinder Block">Cinder Block</option>
+                <option value="Concrete">Concrete</option>
+                <option value="Metal">Metal</option>
+                <option value="Stone">Stone</option>
+                <option value="Wood">Wood</option>
+              </select>
+            </div>
+
+            <div id="countField3" style="display: none">
+              <label for="size3">3rd floor size:*</label>
+              <input type="number" id="size3" name="size3" step="1" />
+
+              <label for="type3">3rd floor structure type:*</label>
+              <select id="type3" name="type3">
+                <option value="">--Select any--</option>
+                <option value="Brick">Brick</option>
+                <option value="Cinder Block">Cinder Block</option>
+                <option value="Concrete">Concrete</option>
+                <option value="Metal">Metal</option>
+                <option value="Stone">Stone</option>
+                <option value="Wood">Wood</option>
+              </select>
+            </div>
+
+            <label for="uti">Utility Status*</label>
+            <select id="uti" name="uti" required>
+              <option value="">--Select any--</option>
+              <option
+                value="Need to call the city and have them cut off all the utilities prior starting demolition."
+              >
+                Utilities On
+              </option>
+              <option value="Utilities are cut off.">Utilities Off</option>
+            </select>
+
+            <label for="ins">Asbestos/Lead Paint Inspection Needed?*</label>
+            <select id="ins" name="ins" required>
+              <option value="">--Select any--</option>
+              <option
+                value=" An asbestos and a lead based paint DIY inspection are also required due to the condition of the property. "
+              >
+                Yes
+              </option>
+              <option value="">No</option>
+            </select>
+
+            <label for="dumpster">Dumpster needed?</label>
+            <select id="dumpster" name="dumpster">
+              <option value="">--Select Any--</option>
+              <option value="20 C.Y./2 Ton">
+                Dumpster - Small - 20 C.Y./2 Ton
+              </option>
+              <option value="30 C.Y./3 Ton">
+                Dumpster - Medium - 30 C.Y./3 Ton
+              </option>
+              <option value="40 C.Y./4 Ton">
+                Dumpster - Large - 40 C.Y./4 Ton
+              </option>
+              <option value="60 C.Y./6 Ton">
+                Dumpster - Extra Large - 60 C.Y./6 Ton
+              </option>
+            </select>
+
+            <label for="perm">Permit Needed:*</label>
+            <select id="perm" name="perm" required>
+              <option value="">--Select any--</option>
+              <option value="Will require pulling a permit. ">Yes</option>
+              <option value="Permit not required. ">No</option>
+            </select>
+
+            <label for="additionalInfo">Additional information:</label>
+            <textarea
+              id="additionalInfo"
+              name="additionalInfo"
+              placeholder="Disclaimers or any other comment"
+            ></textarea>
+
+            <label for="conj">Make this bid conjunction to:</label>
+            <input
+              type="text"
+              id="conj"
+              name="conj"
+              placeholder="Bid name only"
+            />
+
+            <label for="price">Price (in USD):</label>
+            <input type="number" id="price" name="price" step="0.01" />
+
+            <button type="submit">Generate Bid</button>
+            <a href="https://www.zillow.com/" target="_blank" id="findpropsize"
+              >Find Property Size: Zillow</a
+            >
+            <a href="https://www.google.com/maps" target="_blank" id="measuredr"
+              >Measure Property Size</a
+            >
+          </form>
+        </div>
+      </div>
+
+      <!-- New Note Section -->
+      <div class="note-container">
+        <h2>Bids</h2>
+        <div id="notesList" class="notes-list">
+          <!-- Notes will be dynamically added here -->
+        </div>
+        <button id="copyAllBidsButton">Copy All Bids</button>
+        <a href="../index.html" id="home">
+          <ion-icon name="home"></ion-icon> Go Home</a
+        >
+      </div>
+    </div>
+
+    <div id="floatingMessage" class="floating-message">Copied!</div>
+
+    <!-- Script to Generate Bid -->
+    <script>
+      // Floor size and type visibility logic
+      document.getElementById("flr").addEventListener("change", function () {
+        const flr = this.value;
+        const countField1 = document.getElementById("countField1");
+        const countField2 = document.getElementById("countField2");
+        const countField3 = document.getElementById("countField3");
+
+        // floor field visibility
+        if (flr === "1 floor") {
+          countField1.style.display = "block";
+          countField2.style.display = "none";
+          countField3.style.display = "none";
+        } else if (flr === "2 floors") {
+          countField1.style.display = "block";
+          countField2.style.display = "block";
+          countField3.style.display = "none";
+        } else if (flr === "3 floors") {
+          countField1.style.display = "block";
+          countField2.style.display = "block";
+          countField3.style.display = "block";
+        } else {
+          countField1.style.display = "none";
+          countField2.style.display = "none";
+          countField3.style.display = "none";
+        }
+      });
+
+      document.getElementById("appl").addEventListener("change", function () {
+        const appl = this.value;
+        const countField0 = document.getElementById("countField0");
+
+        // floor field visibility
+        if (appl === "with basement") {
+          countField0.style.display = "block";
+        } else {
+          countField0.style.display = "none";
+        }
+      });
+      document
+        .getElementById("Form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form values
+          const bidPrefix = document.getElementById("bidPrefix").value;
+          const flr = document.getElementById("flr").value;
+          const appl = document.getElementById("appl").value;
+          const size0 = document.getElementById("size0").value;
+          const size1 = document.getElementById("size1").value;
+          const size2 = document.getElementById("size2").value;
+          const size3 = document.getElementById("size3").value;
+          const type0 = document.getElementById("type0").value;
+          const type1 = document.getElementById("type1").value;
+          const type2 = document.getElementById("type2").value;
+          const type3 = document.getElementById("type3").value;
+          const uti = document.getElementById("uti").value;
+          const ins = document.getElementById("ins").value;
+          const dumpster = document.getElementById("dumpster").value;
+          const perm = document.getElementById("perm").value;
+          const additionalInfo =
+            document.getElementById("additionalInfo").value;
+          const conj = document.getElementById("conj").value;
+          const price = parseFloat(document.getElementById("price").value || 0);
+
+          // Format the price with commas
+          const formattedPrice = price.toLocaleString("en-US", {
+            style: "decimal",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+
+          // Generate the bid text
+          const bidText = `${bidPrefix} Need to demolish complete ${flr} of the property (${appl}) due to the severe structural damage. The property is posing threat as it can crumble down any moment. ${uti}${ins}${perm} Will require ${dumpster} dumpster to haul away the debris. Will require renting equipments. ***The whole job will take 10-14 days to complete with clean-up.*** ${
+            conj ? `***Must be approved in conjunction to ${conj} bid.***` : ""
+          } ${additionalInfo}\nBreakdown:\n${
+            size0 ? `Basement: ${size0}SF - ${type0} Structure.\n` : ""
+          }${size1 ? `1st Floor: ${size1}SF - ${type1} Structure.\n` : ""}${
+            size2 ? `2nd floor: ${size2}SF - ${type2} Structure.\n` : ""
+          }${
+            size3 ? `3rd Floor: ${size3}SF - ${type3} Structure.\n` : ""
+          }\nPrice: $${formattedPrice}`;
+          // Save the bid as a note
+          saveBidAsNote(bidText);
+        });
+    </script>
+    <script src="script_other.js"></script>
+    <script src="..\dark_mode.js"></script>
+    <script src="blocker.js"></script>
+  </body>
+</html>
