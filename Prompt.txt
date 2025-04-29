@@ -34,3 +34,9 @@ BMT/
 │   │   ├── styles.css
 
 
+Hidden Modules - 
+    1. profile.html - Subscription Button, Subscription Modules, Pricing and Bid demo navigation
+    2. index.html - Pricing and Bid demo navigation
+    3. Analytics - Pricing and Bid demo navigation
+    4. Price Checker - 
+
