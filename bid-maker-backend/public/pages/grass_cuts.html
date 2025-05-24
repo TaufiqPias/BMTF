@@ -277,11 +277,11 @@
             <label for="lSize">Lot Size:*</label>
             <input type="number" id="lSize" name="lSize" required />
 
-            <label for="gheight">Grass Height:*</label>
+            <label for="gcheight">Grass Height:*</label>
             <input
               type="number"
-              id="gheight"
-              name="gheight"
+              id="gcheight"
+              name="gcheight"
               step="1"
               required
             />
@@ -397,7 +397,7 @@
           const bidPrefix = document.getElementById("bidPrefix").value;
           const cutType = document.getElementById("cutType").value;
           const lSize = document.getElementById("lSize").value;
-          const gheight = document.getElementById("gheight").value;
+          const gcheight = document.getElementById("gcheight").value;
           const brushhog = document.getElementById("brushhog").value;
           const reason = document.getElementById("reason").value;
           const debris = document.getElementById("debris").value;
@@ -415,7 +415,7 @@
           });
 
           // Generate the bid text
-          const bidText = `${bidPrefix} Need to perform ${cutType} on ${lSize} SF of lot area at the property. Grass height: ${gheight}". Reason: ${reason}. Brush hog needed: ${brushhog}. ${equipments}. Will generate approx ${debris} cyds of debris - bid includes hauling away debris from the property. ${
+          const bidText = `${bidPrefix} Need to perform ${cutType} on ${lSize} SF of lot area at the property. Grass height: ${gcheight}". Reason: ${reason}. Brush hog needed: ${brushhog}. ${equipments}. Will generate approx ${debris} cyds of debris - bid includes hauling away debris from the property. ${
             conj ? `***Must be approved in conjunction to ${conj} bid.` : ""
           } ${additionalInfo}\nPrice: $${formattedPrice}`;
           // Save the bid as a note
