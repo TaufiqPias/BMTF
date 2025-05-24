@@ -96,3 +96,11 @@ document.querySelector(".info-toggle").addEventListener("click", function () {
   const infoPanel = document.querySelector(".info-panel");
   infoPanel.classList.toggle("active");
 });
+
+// Block Ctrl+U (or Cmd+U on Mac)
+document.addEventListener("keydown", function (event) {
+  if ((event.ctrlKey || event.metaKey) && event.key === "u") {
+    event.preventDefault();
+    alert("Ctrl+U is disabled!");
+  }
+});

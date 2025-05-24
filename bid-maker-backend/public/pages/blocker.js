@@ -20,6 +20,14 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+// Block Ctrl+U (or Cmd+U on Mac)
+document.addEventListener("keydown", function (event) {
+  if ((event.ctrlKey || event.metaKey) && event.key === "u") {
+    event.preventDefault();
+    alert("Ctrl+U is disabled!");
+  }
+});
+
 // Toggle functionality for mobile only
 document.querySelectorAll(".toggle-btn").forEach((button) => {
   button.addEventListener("click", function () {

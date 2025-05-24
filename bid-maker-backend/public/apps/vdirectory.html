@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Taufiq Pias" />
+    <title>Bid Maker Tool - Vendor Directory</title>
+    <link rel="icon" type="image/x-icon" href="../Images/Favicon.png" />
+    <link rel="stylesheet" href="vdir.css" />
+    <script>
+      (function () {
+        const savedMode = localStorage.getItem("themeMode");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (savedMode === "dark" || (!savedMode && prefersDark)) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-M2K232X4B3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-M2K232X4B3");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "qj1sdmrlho");
+    </script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <h1>Bid Maker Tool</h1>
+        <nav class="header-nav">
+          <a href="../index.html">Home</a>
+          <a href="../navpages/analytics.html">Analytics</a>
+          <a href="https://forms.gle/KLGN4DuJQoBhE3nq9" target="_blank"
+            >Report</a
+          >
+        </nav>
+        <div class="header-actions">
+          <button id="darkModeToggle" class="toggle-btn">Dark Mode</button>
+          <a href="../profile.html" class="profile-btn">Profile</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content with Two Columns -->
+    <div class="container">
+      <div class="columns">
+        <div class="column left-column">
+          <h4>Please Select a State to view the vendor map.</h4>
+
+          <select id="stateopt" class="state-select">
+            <option value="">--Select State--</option>
+            <option value="AK">AK - Alaska - (11)</option>
+            <option value="AL">AL - Alabama - (267)</option>
+            <option value="AR">AR - Arkansas - (7)</option>
+            <option value="AZ">AZ - Arizona - (99)</option>
+            <option value="CA">CA - California - (139)</option>
+            <option value="CO">CO - Colorado - (40)</option>
+            <option value="CT">CT - Connecticut - (166)</option>
+            <option value="DC">DC - District of Columbia - (11)</option>
+            <option value="DE">DE - Delaware - (44)</option>
+            <option value="FL">FL - Florida - (275)</option>
+            <option value="GA">GA - Georgia - (316)</option>
+            <option value="HI">HI - Hawaii - (1)</option>
+            <option value="IA">IA - Iowa - (16)</option>
+            <option value="ID">ID - Idaho - (45)</option>
+            <option value="IL">IL - Illinois - (399)</option>
+            <option value="IN">IN - Indiana - (320)</option>
+            <option value="KS">KS - Kansas - (4)</option>
+            <option value="KY">KY - Kentucky - (170)</option>
+            <option value="LA">LA - Louisiana - (82)</option>
+            <option value="MA">MA - Massachusetts - (165)</option>
+            <option value="MD">MD - Maryland - (120)</option>
+            <option value="ME">ME - Maine - (19)</option>
+            <option value="MI">MI - Michigan - (175)</option>
+            <option value="MN">MN - Minnesota - (16)</option>
+            <option value="MO">MO - Missouri - (67)</option>
+            <option value="MS">MS - Mississippi - (186)</option>
+            <option value="MT">MT - Montana - (37)</option>
+            <option value="NC">NC - North Carolina - (246)</option>
+            <option value="ND">ND - North Dakota - (19)</option>
+            <option value="NE">NE - Nebraska - (2)</option>
+            <option value="NH">NH - New Hampshire - (9)</option>
+            <option value="NJ">NJ - New Jersey - (384)</option>
+            <option value="NM">NM - New Mexico - (5)</option>
+            <option value="NY">NY - New York - (540)</option>
+            <option value="OH">OH - Ohio - (459)</option>
+            <option value="OK">OK - Oklahoma - (6)</option>
+            <option value="OR">OR - Oregon - (104)</option>
+            <option value="PA">PA - Pennsylvania - (449)</option>
+            <option value="RI">RI - Rhode Island - (30)</option>
+            <option value="SC">SC - South Carolina - (161)</option>
+            <option value="SD">SD - South Dakota - (33)</option>
+            <option value="TN">TN - Tennessee - (237)</option>
+            <option value="TX">TX - Texas - (516)</option>
+            <option value="VA">VA - Virginia - (170)</option>
+            <option value="VT">VT - Vermont - (21)</option>
+            <option value="WA">WA - Washington - (155)</option>
+            <option value="WI">WI - Wisconsin - (296)</option>
+            <option value="WV">WV - West Virginia - (76)</option>
+            <option value="WY">WY - Wyoming - (6)</option>
+          </select>
+
+          <div class="iframe-container">
+            <div class="iframe-overlay"></div>
+            <iframe class="iframe" id="mapIframe"></iframe>
+        </div>
+        </div>
+        <div class="column right-column">
+          <h2>Instruction</h2>
+          <p>
+            <b>Total States: 49</b><br />
+            <b>Total Vendor: 7121</b><br />
+            <b>Minimum Experience: 3+ Years</b><br />
+            <b>ECT: 7+ Years</b><br /><br>
+            <b>Note:</b> 
+            <ul><li>Please be modest whenever talking to a vendor. If you
+            are not sure about something, please ask someone who is more
+            knowledgeable.</li>
+            <li>We tried to provide the latest version of this data. Please be advised, it is not possible for us to track every vendor. There might be vendors who have - move to different location, terminated their business, changed phone numbers or might be deceased. We apologies in advance if you have to face these cases.</li>
+            <li>You can report misinformation (if found) in the "Report" so that we can update the data.</li>
+            <li>All data collected from numerous sources. These vendors are involved in Property preservation, Rehab and inspection jobs.</li>
+            <li style="color: brown;"> <b>BID MAKER TOOL/bmtool.net</b> is only sharing the data which is publically provided by the individual. Please refrain from mentioning that bmtool.net is the 'source'.</li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="../dark_mode.js"></script>
+    <script>
+      // Mapping of state values to Google Maps embed URLs
+      const mapUrls = {
+        AK: "https://www.google.com/maps/d/u/3/embed?mid=1IudQm-FcFB_rwqK1Ea0Tgnml_5cJyIU&ehbc=2E312F&noprof=1",
+        AL: "https://www.google.com/maps/d/u/3/embed?mid=1ZBswt4NchasORRCHoqwTn9_IUZbLLlM&ehbc=2E312F&noprof=1",
+        AR: "https://www.google.com/maps/d/u/3/embed?mid=1RiuRNOvuqQMgSDN0CXoim3YQ0q40Df4&ehbc=2E312F&noprof=1",
+        AZ: "https://www.google.com/maps/d/u/3/embed?mid=1vLX6RpxoinFN_PK0j8hRartRzlsnPwg&ehbc=2E312F&noprof=1",
+        CA: "https://www.google.com/maps/d/u/3/embed?mid=1fc_cw3Un_0OzTeUFZ1oc0IZj30XxXeE&ehbc=2E312F&noprof=1",
+        CO: "https://www.google.com/maps/d/u/3/embed?mid=1LnhL4S5mQpPv9CR3iVEa34su0c1TzLA&ehbc=2E312F&noprof=1",
+        CT: "https://www.google.com/maps/d/u/3/embed?mid=1vqq7Dcvs9JIoXPTgSnJCZcjYmnnkbBc&ehbc=2E312F&noprof=1",
+        DC: "https://www.google.com/maps/d/u/3/embed?mid=1F0wp97jODI7pfmkHPrhMAadutkN-ghk&ehbc=2E312F&noprof=1",
+        DE: "https://www.google.com/maps/d/u/3/embed?mid=1ok2s8dkLppcVCTFBQEXMFEE2IWxxxEw&ehbc=2E312F&noprof=1",
+        FL: "https://www.google.com/maps/d/u/3/embed?mid=1Vi8IOL7V4LTbq_9zg_RZmAQJfagCGQs&ehbc=2E312F&noprof=1",
+        GA: "https://www.google.com/maps/d/u/3/embed?mid=1NhdRy0e1XDNUMfuRrDJ4tVTy361QzrQ&ehbc=2E312F&noprof=1",
+        HI: "https://www.google.com/maps/d/u/3/embed?mid=1tpAC0dajB3Fcnwi8z4tsQfLFVuJJS0g&ehbc=2E312F&noprof=1",
+        IA: "https://www.google.com/maps/d/u/3/embed?mid=17dPtFx-KihZvMBJvqC-0WbAOi9SQUGU&ehbc=2E312F&noprof=1",
+        ID: "https://www.google.com/maps/d/u/3/embed?mid=1bGDYrHOVAB7CU8XqYYcqEjoLTafhIyU&ehbc=2E312F&noprof=1",
+        IL: "https://www.google.com/maps/d/u/3/embed?mid=1BSi70Nl2AWHcZmsLmA7IfW31z0LEKEw&ehbc=2E312F&noprof=1",
+        IN: "https://www.google.com/maps/d/u/3/embed?mid=1pwvzV8BVU3Cw-yFLN2E-afXH75tLqE4&ehbc=2E312F&noprof=1",
+        KS: "https://www.google.com/maps/d/u/3/embed?mid=1KzGw9hbaNMTUE3fQr5jbMjT8IgnksQ8&ehbc=2E312F&noprof=1",
+        KY: "https://www.google.com/maps/d/u/3/embed?mid=1M1LBQZ3g3W7RGRvNHEA9hT3yMDE6QvE&ehbc=2E312F&noprof=1",
+        LA: "https://www.google.com/maps/d/u/3/embed?mid=1Ru_oEpSffrtJRoVwinoix5TaIhC332A&ehbc=2E312F&noprof=1",
+        MA: "https://www.google.com/maps/d/u/3/embed?mid=1U-GIKQLthEnRTD7q5czoGyJLMF_Ft7E&ehbc=2E312F&noprof=1",
+        MD: "https://www.google.com/maps/d/u/3/embed?mid=1l-PLOM3rMBKz2Wx_VY6-sxYfY-36J8M&ehbc=2E312F&noprof=1",
+        ME: "https://www.google.com/maps/d/u/3/embed?mid=18z5FKkZURQOXPBBwVuXcAiJoSlneHyo&ehbc=2E312F&noprof=1",
+        MI: "https://www.google.com/maps/d/u/3/embed?mid=1SYyNw2-IhHyTbaaqPw7kwCC89yDNAYk&ehbc=2E312F&noprof=1",
+        MN: "https://www.google.com/maps/d/u/3/embed?mid=1-sIWJhGtqMWkjrzh_eHY-zyRQDdqCkw&ehbc=2E312F&noprof=1",
+        MO: "https://www.google.com/maps/d/u/3/embed?mid=1yiY3LZ3-TbYW-_2T5yM1BZLWa48khKc&ehbc=2E312F&noprof=1",
+        MS: "https://www.google.com/maps/d/u/3/embed?mid=1kj_9aW_ioiZnbOgeLmIbTMIOGSqZMzw&ehbc=2E312F&noprof=1",
+        MT: "https://www.google.com/maps/d/u/3/embed?mid=1zY1vTKnPP37z4CWYBU5cLkSQIlhZ-gc&ehbc=2E312F&noprof=1",
+        NC: "https://www.google.com/maps/d/u/3/embed?mid=1Q52wqBKwH3-5ojja3oKGwEUpKvGDRYo&ehbc=2E312F&noprof=1",
+        ND: "https://www.google.com/maps/d/u/3/embed?mid=1GxKl-M6cvpAzSwXr1FJVWHor7gIVKfs&ehbc=2E312F&noprof=1",
+        NE: "https://www.google.com/maps/d/u/3/embed?mid=1G4kDGOarL8vBg9C6Hc3HkyJDAKhTNSw&ehbc=2E312F&noprof=1",
+        NH: "https://www.google.com/maps/d/u/3/embed?mid=1nIa2cCbneYzYOE-mZWSamYl0-1yWt7k&ehbc=2E312F&noprof=1",
+        NJ: "https://www.google.com/maps/d/u/3/embed?mid=1B8sRiG04TMpZQTdtk3X86DvPT0V3aLU&ehbc=2E312F&noprof=1",
+        NM: "https://www.google.com/maps/d/u/3/embed?mid=1w0MHSf1jIIqYPKhyVLiHP-sf9sy6DRU&ehbc=2E312F&noprof=1",
+        NY: "https://www.google.com/maps/d/u/3/embed?mid=1EBVTc2hZbbOe56GZJRVyUA-pNnOtqVU&ehbc=2E312F&noprof=1",
+        OH: "https://www.google.com/maps/d/u/3/embed?mid=1hs2qtJxRGPBmovWKsKwOyF7K3C1cIbI&ehbc=2E312F&noprof=1",
+        OK: "https://www.google.com/maps/d/u/3/embed?mid=1ex-efATwWIEyml2Jsv8LtFKmjqnrRvI&ehbc=2E312F&noprof=1",
+        OR: "https://www.google.com/maps/d/u/3/embed?mid=1gqZkjMK2IbXtjXRNgQSWv9UX9QlII48&ehbc=2E312F&noprof=1",
+        PA: "https://www.google.com/maps/d/u/3/embed?mid=1tH4t4tR1AYFRANn6xF12Bq_t3JSXZC8&ehbc=2E312F&noprof=1",
+        RI: "https://www.google.com/maps/d/u/3/embed?mid=10fLtuYO6hObvWabUiP_OZZT_25p-o6w&ehbc=2E312F&noprof=1",
+        SC: "https://www.google.com/maps/d/u/3/embed?mid=183xc0JgyoJEHVmr6IWEiMxax368dCho&ehbc=2E312F&noprof=1",
+        SD: "https://www.google.com/maps/d/u/3/embed?mid=1Uz4LeWffhBgH0v7WILSrFwudsheS5Os&ehbc=2E312F&noprof=1",
+        TN: "https://www.google.com/maps/d/u/3/embed?mid=1eESOnOo8GGA5ai0ONOCi-i3SrBfsnr0&ehbc=2E312F&noprof=1",
+        TX: "https://www.google.com/maps/d/u/3/embed?mid=15Cj_pCiLVzsB7kvvzDeEVt7cg0-g7bQ&ehbc=2E312F&noprof=1",
+        VA: "https://www.google.com/maps/d/u/3/embed?mid=1nxpQvEYcw8yGsNH-7jg9wqTUUhkICXs&ehbc=2E312F&noprof=1",
+        VT: "https://www.google.com/maps/d/u/3/embed?mid=1PmOUlkZzZAf6Gf4594Kkuvf6g1y6stc&ehbc=2E312F&noprof=1",
+        WA: "https://www.google.com/maps/d/u/3/embed?mid=1OV2OHrMrMrNhY-FG48ZKwr2Ay5bztAE&ehbc=2E312F&noprof=1",
+        WI: "https://www.google.com/maps/d/u/3/embed?mid=18Bc_ae9pjGBSqbba-LPGHdVRmK8nCsI&ehbc=2E312F&noprof=1",
+        WV: "https://www.google.com/maps/d/u/3/embed?mid=1pzVuuJRA6YrKGm1NgF4bqs0Nt3OyNic&ehbc=2E312F&noprof=1",
+        WY: "https://www.google.com/maps/d/u/3/embed?mid=13c8kh1aSEznG6md7cTQF6QOP4AyK9R0&ehbc=2E312F&noprof=1",
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const stateSelect = document.getElementById("stateopt");
+        const mapIframe = document.getElementById("mapIframe");
+
+        stateSelect.addEventListener("change", () => {
+          const selectedState = stateSelect.value;
+          if (selectedState && mapUrls[selectedState]) {
+            mapIframe.src = mapUrls[selectedState];
+          } else {
+            mapIframe.src = "";
+          }
+        });
+      });
+    </script>
+    <script>
+        // Block right-click context menu
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+  alert("Right-click is disabled!");
+});
+
+// Block F12 key
+document.addEventListener("keydown", function (event) {
+  if (event.key === "F12") {
+    event.preventDefault();
+    alert("F12 is disabled!");
+  }
+});
+
+// Block Ctrl+Shift+I (or Cmd+Shift+I on Mac)
+document.addEventListener("keydown", function (event) {
+  if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === "I") {
+    event.preventDefault();
+    alert("Ctrl+Shift+I is disabled!");
+  }
+});
+ // Block Ctrl+U (or Cmd+U on Mac)   
+        document.addEventListener("keydown", function (event) {
+        if ((event.ctrlKey || event.metaKey) && event.key === "u") {
+          event.preventDefault();
+          alert("Ctrl+U is disabled!");
+        }
+        });
+
+    </script>
+  </body>
+</html>
